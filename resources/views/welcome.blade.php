@@ -28,7 +28,10 @@
         <nav class="navbar navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-left">
-                    <h3 class="azul">Bem Vindo!</h3>
+                    <div class="navbar-btn">
+                        <a href="index.html"><img src="{{'../images/logo.png'}}" alt="Logo" class="img-fluid logo"></a>
+                        <button type="button" class="btn-toggle-offcanvas"><i class="fa fa-align-left"></i></button>
+                    </div>
                 </div>
 
                 <div class="navbar-right">
@@ -53,8 +56,9 @@
         </nav>
         <!-- Menu Lateral -->
         <div id="left-sidebar" class="sidebar">
+            {{-- <a href="#" class="menu_toggle"><i class="fa fa-angle-left"></i></a> --}}
             <div class="navbar-brand">
-                <img src="{{'images/logo.png'}}" alt="Logotipo" class="img-fluid">
+                <img src="{{'../images/logo.png'}}" alt="Logotipo" class="img-fluid logo">
                 <button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i class="fa fa-close"></i></button>
             </div>
             <div class="sidebar-scroll">

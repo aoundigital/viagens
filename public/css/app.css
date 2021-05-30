@@ -1943,6 +1943,7 @@
     --primary-color3: #8BCEC9;
     --secondary-color: #1c447d;
     --secondary-color2: #00ACEE;
+    --font-ccc: #cccccc;
     --link-color: #E76886;
     --primary-gradient: linear-gradient(45deg, #59C4BC, #637AAE)
 }
@@ -2822,7 +2823,7 @@ html.fullscreen-bg, html.fullscreen-bg body, html.fullscreen-bg #wrapper {
 }
 
 .navbar-fixed-top .navbar-btn .logo {
-    width: 30px
+    width: 90px
 }
 
 @media screen and (max-width: 640px) {
@@ -3153,7 +3154,7 @@ html.fullscreen-bg, html.fullscreen-bg body, html.fullscreen-bg #wrapper {
 }
 
 .sidebar .navbar-brand .logo {
-    width: 30px
+    width: 160px
 }
 
 .sidebar .navbar-brand span {
@@ -3209,7 +3210,8 @@ html.fullscreen-bg, html.fullscreen-bg body, html.fullscreen-bg #wrapper {
 .offcanvas-active .sidebar .btn-toggle-offcanvas {
     display: block !important;
     background: rgba(255, 255, 255, 0.05);
-    color: var(--font-ccc)
+    color: var(--font-ccc) !important
+    /* color: #ffffff !important; */
 }
 
 .offcanvas-active .menu_toggle {

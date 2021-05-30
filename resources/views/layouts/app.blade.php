@@ -26,6 +26,9 @@
             <div class="container-fluid">
                 <div class="navbar-left">
                     <h3 class="azul">@yield('title')</h3>
+                    <div class="navbar-btn">
+                        <button type="button" class="btn-toggle-offcanvas"><i class="fa fa-align-left"></i></button>
+                    </div>
                 </div>
 
                 <div class="navbar-right">
@@ -52,7 +55,7 @@
         <!-- Menu Lateral -->
         <div id="left-sidebar" class="sidebar">
             <div class="navbar-brand">
-                <img src="{{'../images/logo.png'}}" alt="Logotipo" class="img-fluid">
+                <img src="{{'../images/logo.png'}}" alt="Logotipo" class="img-fluid logo">
                 <button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i class="fa fa-close"></i></button>
             </div>
             <div class="sidebar-scroll">
