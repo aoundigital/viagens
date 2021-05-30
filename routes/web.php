@@ -46,3 +46,7 @@ Route::get('convidados/criar', [ConvidadoController::class, 'create'])->name('co
 Route::get('convidados', [ConvidadoController::class, 'index'])->name('convidados.index');
 // rota inicial
 Route::get('/', function () {return view('welcome');});
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
