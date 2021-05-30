@@ -16,7 +16,13 @@ class Propriedade extends Model
 
     public function viagem()
     {
-        // 'foreign_key'
-        return $this->belongsTo(Viagem::class, 'id', 'propriedade_id' );
+        return $this->hasMany(Viagem::class, 'propriedade_id', 'id' );
     }
+
+    public function avaliacao()
+    {
+        return $this->hasMany(Viagem::class, 'propriedade_id', 'id' );
+    }
+
+
 }

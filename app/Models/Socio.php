@@ -14,4 +14,9 @@ class Socio extends Model
         'email',
         'telefone'
     ];
+
+    public function avaliacao()
+    {
+      return $this->hasMany(Avaliacao::class, 'socio_id', 'id');
+    }
 }

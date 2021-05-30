@@ -9,7 +9,7 @@ class SocioController extends Controller
 {
     public function index()
     {
-        $socios = Socio::all();
+        $socios = Socio::with('avaliacao')->paginate();
 
         return view('dashboard.socios.index', [
             'socios' => $socios

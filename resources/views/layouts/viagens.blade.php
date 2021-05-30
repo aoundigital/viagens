@@ -17,7 +17,7 @@
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
-            <div class="m-t-30"><img src="{{'images/logo.png'}}" width="220" height="114" alt="Ventura"></div>
+            <div class="m-t-30"><img src="{{'../images/logo.png'}}" width="220" height="114" alt="Ventura"></div>
             <p>Aguarde...</p>
         </div>
     </div>
@@ -40,14 +40,24 @@
                             <li class="dropdown hidden-xs">
                                 <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown">Criar</a>
                                 <div class="dropdown-menu pb-0 mt-0">
-                                    <a class="dropdown-item pt-2 pb-2" href="javascript:void(0);">Usuario</a>
-                                    <a class="dropdown-item pt-2 pb-2" href="javascript:void(0);">Viagem</a>
+                                    <a class="dropdown-item pt-2 pb-2" href="{{ route('registrar') }}">Usuario</a>
+                                    <a class="dropdown-item pt-2 pb-2" href="{{ route('viagens.criar') }}">Viagem</a>
                                     <a class="dropdown-item pt-2 pb-2" href="javascript:void(0);">Propriedade</a>
                                     <a class="dropdown-item pt-2 pb-2" href="javascript:void(0);">Equipamento</a>
                                 </div>
                             </li>
                             <li class="hidden-xs"><a href="javascript:void(0);" id="btnFullscreen" class="icon-menu"><i class="fa fa-arrows-alt"></i></a></li>
-                            <li><a href="page-login.html" class="icon-menu"><i class="fa fa-power-off"></i></a></li>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <x-jet-dropdown-link href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
+                                        {{-- {{ __('Log Out') }} --}}
+                                        <i class="fa fa-power-off"></i>
+                                    </x-jet-dropdown-link>
+                                </form>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -65,25 +75,26 @@
                 <nav id="left-sidebar-nav" class="sidebar-nav">
                     <ul id="main-menu" class="metismenu">
                         <li class="header">Páginas</li>
-                        <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-                        <li><a href="#"><i class="fa fa-calendar"></i> <span>Calendário</span></a></li>
-                        <li><a href="#"><i class="fa fa-th-list"></i> <span>Afazeres</span></a></li>
-                        <li>
-                            <a href="#charts" class="has-arrow"><i class="fa fa-pie-chart"></i><span>Gráficos</span></a>
-                            <ul>
-                                <li><a href="#">Apex Charts</a></li>
-                                <li><a href="#">C3 Charts</a></li>
-                                <li><a href="#">Morris Chart</a></li>
-                                <li><a href="#">Flot Chart</a></li>
-                                <li><a href="#">ChartJS</a></li>
-                            </ul>
+                        <li class="{{ (request()->is('viagens')) ? 'active' : '' }}">
+                            <a href="{{ route('viagens.index') }}"><i class="fa fa-map-marker"></i><span>Viagens</span></a>
+                        </li>
+                        <li class="{{ (request()->is('viagens/criar')) ? 'active' : '' }}">
+                            <a href="{{ route('viagens.criar') }}"><i class="fab fa-avianex"></i><span>Nova Viagem</span></a>
+                        </li>
+                        <li class="{{ (request()->is('propriedades')) ? 'active' : '' }}">
+                            <a href="{{ route('propriedades.index') }}"><i class="fa fa-home"></i> <span>Propriedades</span></a>
+                        </li>
+                        <li class="{{ (request()->is('socios')) ? 'active' : '' }}">
+                            <a href="{{ route('socios.index') }}"><i class="fa fa-window-restore"></i> <span>Avaliadores</span></a>
                         </li>
                         <li>
-                            <a href="#Pages" class="has-arrow"><i class="fa fa-folder"></i><span>Outras Páginas</span></a>
+                            <a href="#charts" class="has-arrow"><i class="fa fa-arrows-v"></i><span>Relatórios</span></a>
                             <ul>
-                                <li><a href="#">Login</a></li>
-                                <li><a href="#">Register</a></li>
-                                <li><a href="#">Forgot Password</a></li>
+                                <li><a href="#">Gráfico 1</a></li>
+                                <li><a href="#">Gráfico 2</a></li>
+                                <li><a href="#">Gráfico 3</a></li>
+                                <li><a href="#">Gráfico 4</a></li>
+                                <li><a href="#">Gráfico 5</a></li>
                             </ul>
                         </li>
                     </ul>

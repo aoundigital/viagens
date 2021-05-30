@@ -6263,7 +6263,7 @@ ul.list-justify.large-number span {
 }
 
 .text-primary {
-    color: var(--primary-color)
+    color: #bea313
 }
 
 .text-info {
@@ -6409,6 +6409,10 @@ small {
 
 .text-dark {
     color: var(--dark-color)
+}
+
+.text-ventura {
+    color: #bea313 !important;
 }
 
 .m-l--125 {
