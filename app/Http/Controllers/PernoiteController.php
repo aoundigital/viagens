@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pernoite;
+use App\Models\Viagem;
 use Illuminate\Http\Request;
 
 class PernoiteController extends Controller
@@ -18,8 +19,9 @@ class PernoiteController extends Controller
 
     public function create(Request $request)
     {
+        $viage = Viagem::find($request->idViagem);
         return view('dashboard.pernoites.criar', [
-            'idViagem' => $request->idViagem
+            'viagem' => $viage
         ]);
     }
 

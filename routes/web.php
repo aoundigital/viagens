@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // rota de viagens
+    Route::delete('viagens/{id}', [ViagemController::class, 'destroy'])->name('viagens.destroy');
     Route::post('viagens', [ViagemController::class, 'store'])->name('viagens.enviar');
     Route::get('viagens/criar', [ViagemController::class, 'create'])->name('viagens.criar');
     Route::get('viagens', [ViagemController::class, 'index'])->name('viagens.index');
     // rota de avaliacoes
+    Route::delete('avaliacoes/{id}', [AvaliacaoController::class, 'destroy'])->name('avaliacoes.destroy');
     Route::post('avaliacoes', [AvaliacaoController::class, 'store'])->name('avaliacoes.enviar');
     Route::get('avaliacoes/criar', [AvaliacaoController::class, 'create'])->name('avaliacoes.criar');
     Route::get('avaliacoes', [AvaliacaoController::class, 'index'])->name('avaliacoes.index');
@@ -30,6 +32,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // rota de sócios
     Route::get('socios', [SocioController::class, 'index'])->name('socios.index');
     // rota de reembolso
+    Route::delete('reembolsos/{id}', [ReembolsoController::class, 'destroy'])->name('reembolso.destroy');
     Route::post('reembolsos', [ReembolsoController::class, 'store'])->name('reembolsos.enviar');
     Route::get('reembolsos/criar', [ReembolsoController::class, 'create'])->name('reembolsos.criar');
     Route::get('reembolsos', [ReembolsoController::class, 'index'])->name('reembolsos.index');

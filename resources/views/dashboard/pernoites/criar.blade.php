@@ -3,6 +3,16 @@
 @section('title', 'Cadastrar Pernoite')
 
 @section('content')
+    <div class="block-header">
+        <div class="row clearfix">
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <h6 class="text-info">Viagem do dia {{  date('d/m/Y', strtotime($viagem->data_entrada)) }} até {{  date('d/m/Y', strtotime($viagem->data_saida)) }}</h6>
+            </div>
+            <div class="col-lg-8 col-md-12 col-sm-12 text-lg-right">
+                <a class="btn btn-outline-dark" href="{{ url()->previous() }}"><< Voltar</a>
+            </div>
+        </div>
+    </div>
     <div class="row clearfix">
         <div class="col-md-6 col-sm-12">
             <div class="card p-5">
@@ -12,7 +22,7 @@
                             @csrf
                             <div class="col-md-6 col-sm-12">
                                 <input type="hidden" class="form-control" id="viagem_id" name="viagem_id"
-                                    value="{{ $idViagem }}">
+                                    value="{{ $viagem->id }}">
                                 <label for="numero_pessoas">Quantidade Pessoas</label>
                                 <input type="number" class="form-control" name="numero_pessoas" id="numero_pessoas"
                                     value="{{ old('numero_pessoas') }}">

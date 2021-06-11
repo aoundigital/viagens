@@ -16,9 +16,11 @@ class ViagemController extends Controller
             'pernoite',
             'translado',
             'avaliacao'
-        ])->paginate();
+        ])->latest()->paginate(6);
 
-        return view('dashboard.viagens.index', [
+        // dd($viagens);
+
+        return view('dashboard.viagens.index_novo', [
             'viagens' => $viagens
         ]);
     }
@@ -33,5 +35,22 @@ class ViagemController extends Controller
         Viagem::create($request->all());
 
         return redirect()->route('viagens.index');
+    }
+
+    public function destroy(Request $request)
+    {
+        // dd($request->id);
+        if (!$viage = Viagem::find($request->id)) {
+            $mensage = 'Esta viagem ja foi excluida ou não existe!';
+            return redirect()->route('viagens.index', [
+                'm' => $mensage
+            ]);
+        }
+        //deleta a viagem e retorna com mensagem
+        $viage->delete();
+        $mensage = 'Excluido com Sucesso!';
+        return redirect()->route('viagens.index', [
+            'm' => $mensage
+        ]);
     }
 }

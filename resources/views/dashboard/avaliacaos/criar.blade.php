@@ -3,6 +3,18 @@
 @section('title', 'Cadastrar Reembolso')
 
 @section('content')
+    <div class="block-header">
+        <div class="row clearfix">
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <h6 class="text-info">Viagem do dia {{ date('d/m/Y', strtotime($viagem->data_entrada)) }} até
+                    {{ date('d/m/Y', strtotime($viagem->data_saida)) }}</h6>
+            </div>
+            <div class="col-lg-8 col-md-12 col-sm-12 text-lg-right">
+                <a class="btn btn-outline-dark" href="{{ url()->previous() }}">
+                    << Voltar</a>
+            </div>
+        </div>
+    </div>
     <div class="row clearfix">
         <div class="col-md-6 col-sm-12">
             <div class="card p-5">
@@ -11,19 +23,59 @@
                         @csrf
                         <label for="socio_id">Avaliador</label>
                         <input type="hidden" class="form-control" id="viagem_id" name="viagem_id"
-                            value="{{ $idViagem }}">
-                        <select class="form-control" name="socio_id" id="socio_id">
-                            <option value="1" @if (old('socio_id') === '1') selected @endif>Carlos</option>
-                            <option value="2" @if (old('socio_id') === '2') selected @endif>José Luiz</option>
-                            <option value="3" @if (old('socio_id') === '3') selected @endif>Patrícia</option>
-                            <option value="4" @if (old('socio_id') === '4') selected @endif>Paula</option>
+                            value="{{ $viagem->id }}">
+                        <select name="socio_id" class="form-control" id="socio_id">
+                            @if (!in_array('1', $ids))
+                                <option value="1" @if (old('socio_id') === '1') selected @endif>Carlos</option>
+                            @endif
+                            @if (!in_array('2', $ids))
+                                <option value="2" @if (old('socio_id') === '2') selected @endif>José Luiz</option>
+                            @endif
+                            @if (!in_array('3', $ids))
+                                <option value="3" @if (old('socio_id') === '3') selected @endif>Patrícia</option>
+                            @endif
+                            @if (!in_array('4', $ids))
+                                <option value="4" @if (old('socio_id') === '4') selected @endif>Paula</option>
+                            @endif
                         </select>
                         <input type="hidden" class="form-control" id="propriedade_id" name="propriedade_id"
-                            value="{{ $idPropriedade }}">
+                            value="{{ $viagem->propriedade_id }}">
                     </div>
                     <button class="btn btn-primary" type="submit">Enviar</button>
                 </form>
             </div>
         </div>
+        <div class="col-md-6 col-sm-12">
+            <div class="card p-5">
+                <h4>Avaliações Cadastradas</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Número</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Excluir</th>
+                        </tr>
+                    </thead>
+                    @foreach ($viagem->avaliacao as $avaliacao)
+                        <tbody>
+                            <tr>
+                                <td>{{ $avaliacao->id }}</td>
+                                <td>{{ $avaliacao->nome_socio }}</td>
+                                <td>
+                                    <form action="{{ route('avaliacoes.destroy', $avaliacao->id) }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button class="btn text-danger"
+                                            onclick="return confirm('Quer mesmo deletar esta avaliação?')" type="submit"><i
+                                                class="fas fa-trash-alt"></i> Avaliação</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    @endforeach
+                </table>
+            </div>
+        </div>
     </div>
+
 @endsection

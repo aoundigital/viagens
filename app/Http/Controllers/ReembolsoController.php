@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Reembolso;
 use App\Models\Socio;
+use App\Models\Viagem;
 use Illuminate\Http\Request;
 
 class ReembolsoController extends Controller
@@ -19,8 +20,17 @@ class ReembolsoController extends Controller
 
     public function create(Request $request)
     {
+        $viage = Viagem::with('reembolso')->find($request->idViagem);
+
+        //criar um array de ids dos socios já cadastrados no reembolso
+        $ids = [];
+        foreach ($viage->reembolso as $re) {
+            $ids[] = $re->socio_id;
+        }
+
         return view('dashboard.reembolsos.criar', [
-            'idViagem' => $request->idViagem
+            'viagem' => $viage,
+            'ids' => $ids
         ]);
     }
 
@@ -38,5 +48,20 @@ class ReembolsoController extends Controller
         ]);
 
         return redirect()->route('viagens.index');
+    }
+
+    public function destroy(Request $request)
+    {
+        if (!$reembolso = Reembolso::find($request->id)) {
+            $mensage = 'Este reembolso ja foi excluida ou não existe!';
+            return redirect()->route('viagens.index', [
+                'm' => $mensage
+            ]);
+        }
+        $reembolso->delete();
+        $mensage = 'Excluido com Sucesso!';
+        return redirect()->route('viagens.index', [
+            'm' => $mensage
+        ]);
     }
 }
