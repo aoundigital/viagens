@@ -11,6 +11,8 @@ class PropriedadeController extends Controller
     {
         $propriedades = Propriedade::with(['viagem', 'avaliacao'])->get();
 
+        // dd($propriedades);
+
         return view('dashboard.propriedades.index', [
             'propriedades' => $propriedades
             ]);

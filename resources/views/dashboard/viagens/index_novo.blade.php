@@ -29,8 +29,8 @@
                                         <th scope="col">Entrada</th>
                                         <th scope="col">Propriedade</th>
                                         <th scope="col">Reembolso</th>
-                                        <th scope="col">Pernoite</th>
                                         <th scope="col">Translado</th>
+                                        <th scope="col">Pernoite</th>
                                         <th scope="col">Avaliações</th>
                                         <th scope="col">Excluir</th>
                                         </tr>
@@ -56,7 +56,18 @@
                                                 <br>
                                                 {{-- array de pernoites --}}
                                                 @php $sum = 0; @endphp
-                                                <a class="btn btn-primary btn-sm" href="{{ route('reembolsos.criar', ['idViagem' => $viagem->id]) }}">Criar Reembolso</a>
+                                                <a class="btn btn-primary btn-sm" href="{{ route('reembolsos.criar', ['idViagem' => $viagem->id]) }}">Reembolsos</a>
+                                            </td>
+                                            {{-- Translado --}}
+                                            <td>
+                                                Total:  {{ $viagem->translado->count() }}
+                                                {{-- @if ($viagem->translado->count() != 0)
+                                                    =>
+                                                    @foreach ( $viagem->translado as $trans )
+                                                        {{ $trans->prefixo }} |
+                                                    @endforeach
+                                                @endif --}}
+                                                <br><a class="btn btn-info btn-sm" href="{{ route('translados.criar', ['idViagem' => $viagem->id]) }}">Translados</a>
                                             </td>
                                             {{-- Pernoite --}}
                                             <td>
@@ -69,18 +80,7 @@
                                                         com {{ $sum }} pessoas
                                                     @endif
                                                 @endif
-                                                <br><a class="btn btn-info btn-sm" href="{{ route('pernoites.criar', ['idViagem' => $viagem->id]) }}">Criar Pernoite</a>
-                                            </td>
-                                            {{-- Translado --}}
-                                            <td>
-                                                Total:  {{ $viagem->translado->count() }}
-                                                {{-- @if ($viagem->translado->count() != 0)
-                                                    =>
-                                                    @foreach ( $viagem->translado as $trans )
-                                                        {{ $trans->prefixo }} |
-                                                    @endforeach
-                                                @endif --}}
-                                                <br><a class="btn btn-info btn-sm" href="{{ route('translados.criar', ['idViagem' => $viagem->id]) }}">Criar Translado</a>
+                                                <br><a class="btn btn-info btn-sm" href="{{ route('pernoites.criar', ['idViagem' => $viagem->id]) }}">Pernoites</a>
                                             </td>
                                             {{-- Avaliações --}}
                                             <td>
@@ -92,14 +92,14 @@
                                                         {{ $aval->nome_socio }},
                                                     @endforeach
                                                 @endif
-                                                <br> <a class="btn btn-dark btn-sm" href="{{ route('avaliacoes.criar', ['idViagem' => $viagem->id, 'idPropriedade' => $viagem->propriedade_id]) }}">Criar Avaliação</a>
+                                                <br> <a class="btn btn-dark btn-sm" href="{{ route('avaliacoes.criar', ['idViagem' => $viagem->id, 'idPropriedade' => $viagem->propriedade_id]) }}">Avaliações</a>
                                             </td>
                                             {{-- Excluir --}}
                                             <td>
                                                 <form action="{{ route('viagens.destroy', $viagem->id) }}" method="POST">
                                                     @csrf
                                                     <input type="hidden" name="_method" value="DELETE">
-                                                    <button class="btn text-danger" onclick="return confirm('Quer mesmo deletar esta viagem?')" type="submit"><i class="fas fa-trash-alt"></i> Deletar Vaigem</button>
+                                                    <button class="btn text-danger" onclick="return confirm('Quer mesmo deletar esta viagem?')" type="submit"><i class="fas fa-trash-alt"></i> Viagem</button>
                                                 </form>
                                             </td>
                                         </tr>

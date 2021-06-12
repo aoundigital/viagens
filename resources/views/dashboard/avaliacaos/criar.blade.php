@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="row clearfix">
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-5 col-sm-12">
             <div class="card p-5">
                 <form action="{{ route('avaliacoes.enviar') }}" method="POST">
                     <div class="form-group">
@@ -45,22 +45,24 @@
                 </form>
             </div>
         </div>
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-7 col-sm-12">
             <div class="card p-5">
                 <h4>Avaliações Cadastradas</h4>
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">Número</th>
                             <th scope="col">Nome</th>
+                            <th scope="col">Detalhes</th>
+                            <th scope="col">Link</th>
                             <th scope="col">Excluir</th>
                         </tr>
                     </thead>
                     @foreach ($viagem->avaliacao as $avaliacao)
                         <tbody>
                             <tr>
-                                <td>{{ $avaliacao->id }}</td>
                                 <td>{{ $avaliacao->nome_socio }}</td>
+                                <td><a class="btn btn-warning">Ver</a></td>
+                                <td><a class="btn btn-outline-secondary">Copiar Link</a></td>
                                 <td>
                                     <form action="{{ route('avaliacoes.destroy', $avaliacao->id) }}" method="POST">
                                         @csrf
