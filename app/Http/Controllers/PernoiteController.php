@@ -31,4 +31,19 @@ class PernoiteController extends Controller
 
         return redirect()->route('viagens.index');
     }
+
+    public function destroy(Request $request)
+    {
+        if (!$traslado = Pernoite::find($request->id)) {
+            $mensage = 'Esta pernoite ja foi excluida ou não existe!';
+            return redirect()->route('viagens.index', [
+                'm' => $mensage
+            ]);
+        }
+        $traslado->delete();
+        $mensage = 'Excluido com Sucesso!';
+        return redirect()->route('viagens.index', [
+            'm' => $mensage
+        ]);
+    }
 }

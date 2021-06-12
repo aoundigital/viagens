@@ -39,24 +39,27 @@
                                     <tbody>
                                         <tr>
                                             {{-- Estadia --}}
-                                            <td>{{ $viagem->quantidade_dias }} dias</td>
+                                            <td>
+                                                {{ $viagem->quantidade_dias }} dias
+                                            </td>
                                             {{-- Entrada --}}
-                                            <td>{{ date('d/m/Y', strtotime($viagem->data_entrada)) }}</td>
+                                            <td>
+                                                {{ date('d/m/Y', strtotime($viagem->data_entrada)) }}
+                                            </td>
                                             {{-- Propriedade --}}
-                                            <td><b>{{ $viagem->propriedade->nome }}</b></td>
+                                            <td>
+                                                <b>{{ $viagem->propriedade->nome }}</b>
+                                            </td>
                                             {{-- Reembolso --}}
                                             <td>
-                                               Total:  {{$viagem->reembolso->count()}}
-                                                @if ($viagem->reembolso->count() != 0)
-                                                =>
-                                                    @foreach ( $viagem->reembolso as $remb )
-                                                        {{ $remb->nome_socio }},
-                                                    @endforeach
-                                                @endif
-                                                <br>
-                                                {{-- array de pernoites --}}
-                                                @php $sum = 0; @endphp
+                                               Total:  {{$viagem->reembolso->count()}}<br>                                                                                             
                                                 <a class="btn btn-primary btn-sm" href="{{ route('reembolsos.criar', ['idViagem' => $viagem->id]) }}">Reembolsos</a>
+                                                @if ($viagem->reembolso->count() != 0)
+                                                <br>
+                                                    @foreach ( $viagem->reembolso as $remb )
+                                                      <small>{{ $remb->nome_socio }},</small>  
+                                                    @endforeach
+                                                @endif   
                                             </td>
                                             {{-- Translado --}}
                                             <td>
@@ -71,11 +74,15 @@
                                             </td>
                                             {{-- Pernoite --}}
                                             <td>
-                                                Total:  {{$viagem->pernoite->count()}}
+                                                @php 
+                                                    $sum = 0; 
+                                                @endphp
+                                                Total: {{$viagem->pernoite->count()}}
                                                 @if ($viagem->pernoite->count() != 0)
                                                     @foreach ( $viagem->pernoite as $per )
                                                         @php $sum += $per['numero_pessoas'] @endphp
                                                     @endforeach
+                                                    
                                                     @if ($sum != 0)
                                                         com {{ $sum }} pessoas
                                                     @endif
@@ -85,14 +92,12 @@
                                             {{-- Avaliações --}}
                                             <td>
                                                 Total: {{$viagem->avaliacao->count()}}
-
-                                                @if ($viagem->avaliacao->count() != 0)
-                                                =>
+                                                <br> <a class="btn btn-dark btn-sm" href="{{ route('avaliacoes.criar', ['idViagem' => $viagem->id, 'idPropriedade' => $viagem->propriedade_id]) }}">Avaliações</a>                                                
+                                                @if ($viagem->avaliacao->count() != 0) <br>
                                                     @foreach ( $viagem->avaliacao as $aval )
-                                                        {{ $aval->nome_socio }},
+                                                       <small>{{ $aval->nome_socio }},</small> 
                                                     @endforeach
                                                 @endif
-                                                <br> <a class="btn btn-dark btn-sm" href="{{ route('avaliacoes.criar', ['idViagem' => $viagem->id, 'idPropriedade' => $viagem->propriedade_id]) }}">Avaliações</a>
                                             </td>
                                             {{-- Excluir --}}
                                             <td>

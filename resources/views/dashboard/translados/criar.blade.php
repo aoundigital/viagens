@@ -3,8 +3,20 @@
 @section('title', 'Cadastrar Translado')
 
 @section('content')
+    <div class="block-header">
+        <div class="row clearfix">
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <h6 class="text-info">Viagem do dia {{ date('d/m/Y', strtotime($viagem->data_entrada)) }} até
+                    {{ date('d/m/Y', strtotime($viagem->data_saida)) }}</h6>
+            </div>
+            <div class="col-lg-8 col-md-12 col-sm-12 text-lg-right">
+                <a class="btn btn-outline-dark" href="{{ url()->previous() }}">
+                    << Voltar</a>
+            </div>
+        </div>
+    </div>
     <div class="row clearfix">
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-5 col-sm-12">
             <div class="card p-5">
                 <form action="{{ route('translados.enviar') }}" method="POST">
                     <div class="form-group">
@@ -24,6 +36,39 @@
                     </div>
                     <button class="btn btn-primary" type="submit">Enviar</button>
                 </form>
+            </div>
+        </div>
+        <div class="col-md-7 col-sm-12">
+            <div class="card p-5">
+                <h4>Translados Cadastradas</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Prefixo Aeronave</th>
+                            <th scope="col">Horário do Voo</th>
+                            <th scope="col">Data do Voo</th>
+                            <th scope="col">Excluir</th>
+                        </tr>
+                    </thead>
+                    @foreach ($viagem->translado as $translado)
+                        <tbody>
+                            <tr>
+                                <td>{{ $translado->prefixo }}</td>
+                                <td>{{ $translado->horario }}</td>
+                                <td>{{ date('d/m/Y', strtotime($translado->data)) }}</td>
+                                <td>
+                                    <form action="{{ route('translados.destroy', $translado->id) }}" method="POST">
+                                        @csrf
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button class="btn text-danger"
+                                            onclick="return confirm('Quer mesmo deletar este translado?')" type="submit"><i
+                                                class="fas fa-trash-alt"></i> Translado</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    @endforeach
+                </table>
             </div>
         </div>
     </div>

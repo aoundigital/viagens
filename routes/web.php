@@ -37,10 +37,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('reembolsos/criar', [ReembolsoController::class, 'create'])->name('reembolsos.criar');
     Route::get('reembolsos', [ReembolsoController::class, 'index'])->name('reembolsos.index');
     // rota de pernoite
+    Route::delete('pernoites/{id}', [PernoiteController::class, 'destroy'])->name('pernoites.destroy');
     Route::post('pernoites', [PernoiteController::class, 'store'])->name('pernoites.enviar');
     Route::get('pernoites/criar', [PernoiteController::class, 'create'])->name('pernoites.criar');
     Route::get('pernoites', [PernoiteController::class, 'index'])->name('pernoites.index');
     // rota de translado
+    Route::delete('translados/{id}', [TransladoController::class, 'destroy'])->name('translados.destroy');
     Route::post('translados', [TransladoController::class, 'store'])->name('translados.enviar');
     Route::get('translados/criar', [TransladoController::class, 'create'])->name('translados.criar');
     Route::get('translados', [TransladoController::class, 'index'])->name('translados.index');
