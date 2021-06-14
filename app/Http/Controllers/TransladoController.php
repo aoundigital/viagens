@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Propriedade;
 use App\Models\Translado;
 use App\Models\Viagem;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class TransladoController extends Controller
     public function create(Request $request)
     {
         $viage = Viagem::find($request->idViagem);
+        $propriedade = Propriedade::find($viage->propriedade_id);
 
         //criar um array de ids dos socios já cadastrados no avaliação
         $ids = [];
@@ -29,7 +31,8 @@ class TransladoController extends Controller
 
         return view('dashboard.translados.criar', [
             'viagem' => $viage,
-            'idViagem' => $request->idViagem
+            'idViagem' => $request->idViagem,
+            'nomeProrpiedade' => $propriedade->nome
         ]);
     }
 

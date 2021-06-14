@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pernoite;
+use App\Models\Propriedade;
 use App\Models\Viagem;
 use Illuminate\Http\Request;
 
@@ -20,8 +21,11 @@ class PernoiteController extends Controller
     public function create(Request $request)
     {
         $viage = Viagem::find($request->idViagem);
+        $propriedade = Propriedade::find($viage->propriedade_id);
+
         return view('dashboard.pernoites.criar', [
-            'viagem' => $viage
+            'viagem' => $viage,
+            'nomeProrpiedade' => $propriedade->nome
         ]);
     }
 

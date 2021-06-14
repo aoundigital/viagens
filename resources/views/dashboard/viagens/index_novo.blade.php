@@ -25,41 +25,41 @@
                                 <table class="table table-hover mb-0">
                                     <thead>
                                         <tr>
-                                        <th scope="col">Estadia</th>
-                                        <th scope="col">Entrada</th>
-                                        <th scope="col">Propriedade</th>
-                                        <th scope="col">Reembolso</th>
-                                        <th scope="col">Translado</th>
-                                        <th scope="col">Pernoite</th>
-                                        <th scope="col">Avaliações</th>
-                                        <th scope="col">Excluir</th>
+                                            <th scope="col">Propriedade</th>
+                                            <th scope="col">Entrada</th>
+                                            <th scope="col">Estadia</th>
+                                            <th scope="col">Reembolso</th>
+                                            <th scope="col">Translado</th>
+                                            <th scope="col">Pernoite</th>
+                                            <th scope="col">Avaliações</th>
+                                            <th scope="col">Excluir</th>
                                         </tr>
                                     </thead>
                                     @foreach ($viagens as $viagem)
                                     <tbody>
                                         <tr>
-                                            {{-- Estadia --}}
+                                            {{-- Propriedade --}}
                                             <td>
-                                                {{ $viagem->quantidade_dias }} dias
+                                                <b>{{ $viagem->propriedade->nome }}</b>
                                             </td>
                                             {{-- Entrada --}}
                                             <td>
                                                 {{ date('d/m/Y', strtotime($viagem->data_entrada)) }}
                                             </td>
-                                            {{-- Propriedade --}}
+                                            {{-- Estadia --}}
                                             <td>
-                                                <b>{{ $viagem->propriedade->nome }}</b>
+                                                {{ $viagem->quantidade_dias }} dias
                                             </td>
                                             {{-- Reembolso --}}
                                             <td>
-                                               Total:  {{$viagem->reembolso->count()}}<br>                                                                                             
+                                               Total:  {{$viagem->reembolso->count()}}<br>
                                                 <a class="btn btn-primary btn-sm" href="{{ route('reembolsos.criar', ['idViagem' => $viagem->id]) }}">Reembolsos</a>
                                                 @if ($viagem->reembolso->count() != 0)
                                                 <br>
                                                     @foreach ( $viagem->reembolso as $remb )
-                                                      <small>{{ $remb->nome_socio }},</small>  
+                                                      <small>{{ $remb->nome_socio }},</small>
                                                     @endforeach
-                                                @endif   
+                                                @endif
                                             </td>
                                             {{-- Translado --}}
                                             <td>
@@ -74,15 +74,15 @@
                                             </td>
                                             {{-- Pernoite --}}
                                             <td>
-                                                @php 
-                                                    $sum = 0; 
+                                                @php
+                                                    $sum = 0;
                                                 @endphp
                                                 Total: {{$viagem->pernoite->count()}}
                                                 @if ($viagem->pernoite->count() != 0)
                                                     @foreach ( $viagem->pernoite as $per )
                                                         @php $sum += $per['numero_pessoas'] @endphp
                                                     @endforeach
-                                                    
+
                                                     @if ($sum != 0)
                                                         com {{ $sum }} pessoas
                                                     @endif
@@ -92,10 +92,10 @@
                                             {{-- Avaliações --}}
                                             <td>
                                                 Total: {{$viagem->avaliacao->count()}}
-                                                <br> <a class="btn btn-dark btn-sm" href="{{ route('avaliacoes.criar', ['idViagem' => $viagem->id, 'idPropriedade' => $viagem->propriedade_id]) }}">Avaliações</a>                                                
+                                                <br> <a class="btn btn-dark btn-sm" href="{{ route('avaliacoes.criar', ['idViagem' => $viagem->id, 'idPropriedade' => $viagem->propriedade_id]) }}">Avaliações</a>
                                                 @if ($viagem->avaliacao->count() != 0) <br>
                                                     @foreach ( $viagem->avaliacao as $aval )
-                                                       <small>{{ $aval->nome_socio }},</small> 
+                                                       <small>{{ $aval->nome_socio }},</small>
                                                     @endforeach
                                                 @endif
                                             </td>

@@ -5,11 +5,11 @@
 @section('content')
     <div class="block-header">
         <div class="row clearfix">
-            <div class="col-lg-4 col-md-12 col-sm-12">
-                <h6 class="text-info">Viagem do dia {{ date('d/m/Y', strtotime($viagem->data_entrada)) }} até
+            <div class="col-lg-7 col-md-8 col-sm-12">
+                <h6 class="text-info">Viagem para {{$nomeProrpiedade}}, do dia {{ date('d/m/Y', strtotime($viagem->data_entrada)) }} até
                     {{ date('d/m/Y', strtotime($viagem->data_saida)) }}</h6>
             </div>
-            <div class="col-lg-8 col-md-12 col-sm-12 text-lg-right">
+            <div class="col-lg-5 col-md-4 col-sm-12 text-lg-right">
                 <a class="btn btn-outline-dark" href="{{ url()->previous() }}">
                     << Voltar</a>
             </div>
@@ -45,10 +45,12 @@
                 </form>
             </div>
         </div>
-        <div class="col-md-7 col-sm-12">
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-12">
             <div class="card p-5">
                 <h4>Avaliações Cadastradas</h4>
-                <table class="table table-striped">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th scope="col">Nome</th>
@@ -61,8 +63,8 @@
                         <tbody>
                             <tr>
                                 <td>{{ $avaliacao->nome_socio }}</td>
-                                <td><a class="btn btn-warning">Ver</a></td>
-                                <td><a class="btn btn-outline-secondary">Copiar Link</a></td>
+                                <td><a class="btn btn-info">Ver</a></td>
+                                <td>{{"https://pesquisa.avaliacao.info?avaliacao=$avaliacao->id&avaliador=.$avaliacao->socio_id&propriedade=$avaliacao->propriedade_id&viagem=$avaliacao->viagem_id"}}</td>
                                 <td>
                                     <form action="{{ route('avaliacoes.destroy', $avaliacao->id) }}" method="POST">
                                         @csrf

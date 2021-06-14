@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Avaliacao;
+use App\Models\Propriedade;
 use App\Models\Socio;
 use App\Models\Viagem;
 use Illuminate\Http\Request;
@@ -21,6 +22,7 @@ class AvaliacaoController extends Controller
     public function create(Request $request)
     {
         $viage = Viagem::find($request->idViagem);
+        $propriedade = Propriedade::find($viage->propriedade_id);
 
         //criar um array de ids dos socios já cadastrados no avaliação
         $ids = [];
@@ -28,9 +30,12 @@ class AvaliacaoController extends Controller
             $ids[] = $av->socio_id;
         }
 
+        // dd($links);
+
         return view('dashboard.avaliacaos.criar', [
             'viagem' => $viage,
-            'ids' => $ids
+            'ids' => $ids,
+            'nomeProrpiedade' => $propriedade->nome
         ]);
     }
 

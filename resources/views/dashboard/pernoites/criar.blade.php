@@ -5,11 +5,13 @@
 @section('content')
     <div class="block-header">
         <div class="row clearfix">
-            <div class="col-lg-4 col-md-12 col-sm-12">
-                <h6 class="text-info">Viagem do dia {{  date('d/m/Y', strtotime($viagem->data_entrada)) }} até {{  date('d/m/Y', strtotime($viagem->data_saida)) }}</h6>
+            <div class="col-lg-7 col-md-8 col-sm-12">
+                <h6 class="text-info">Viagem para {{$nomeProrpiedade}}, do dia {{ date('d/m/Y', strtotime($viagem->data_entrada)) }} até
+                    {{ date('d/m/Y', strtotime($viagem->data_saida)) }}</h6>
             </div>
-            <div class="col-lg-8 col-md-12 col-sm-12 text-lg-right">
-                <a class="btn btn-outline-dark" href="{{ url()->previous() }}"><< Voltar</a>
+            <div class="col-lg-5 col-md-4 col-sm-12 text-lg-right">
+                <a class="btn btn-outline-dark" href="{{ url()->previous() }}">
+                    << Voltar</a>
             </div>
         </div>
     </div>
@@ -80,9 +82,9 @@
                                     <form action="{{ route('pernoites.destroy', $pernoite->id) }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="_method" value="DELETE">
-                                        <button class="btn text-danger"
-                                            onclick="return confirm('Quer mesmo deletar este pernoite?')" type="submit"><i
-                                                class="fas fa-trash-alt"></i> Pernoite</button>
+                                        <button class="btn text-danger" onclick="return confirm('Quer mesmo deletar este pernoite?')" type="submit">
+                                            <i class="fas fa-trash-alt"></i> Pernoite
+                                        </button>
                                     </form>
                                 </td>
                             </tr>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Propriedade;
 use App\Models\Reembolso;
 use App\Models\Socio;
 use App\Models\Viagem;
@@ -21,6 +22,7 @@ class ReembolsoController extends Controller
     public function create(Request $request)
     {
         $viage = Viagem::with('reembolso')->find($request->idViagem);
+        $propriedade = Propriedade::find($viage->propriedade_id);
 
         //criar um array de ids dos socios já cadastrados no reembolso
         $ids = [];
@@ -30,7 +32,8 @@ class ReembolsoController extends Controller
 
         return view('dashboard.reembolsos.criar', [
             'viagem' => $viage,
-            'ids' => $ids
+            'ids' => $ids,
+            'nomeProrpiedade' => $propriedade->nome
         ]);
     }
 

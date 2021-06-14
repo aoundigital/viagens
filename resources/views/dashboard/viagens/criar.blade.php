@@ -31,13 +31,6 @@
                         @csrf
                         <div class="col-md-6 col-sm-12">
                             <div class="form-group">
-                                <label for="quantidade_dias">Quantidade Dias</label>
-                                <input type="number" class="form-control" name="quantidade_dias" id="quantidade_dias"
-                                    value="{{ old('quantidade_dias') }}">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <div class="form-group">
                                 <label for="propriedade_id">Propriedade</label>
                                 <select class="form-control" name="propriedade_id" id="propriedade_id">
                                     <option value="1" @if (old('propriedade_id') === '1') selected @endif>Campos do Jordão</option>
@@ -45,6 +38,13 @@
                                     <option value="3" @if (old('propriedade_id') === '3') selected @endif>Avaré / Arandu</option>
                                     <option value="4" @if (old('propriedade_id') === '4') selected @endif>Angra dos Reis</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                            <div class="form-group">
+                                <label for="quantidade_dias">Quantidade Dias</label>
+                                <input type="number" class="form-control" name="quantidade_dias" id="quantidade_dias"
+                                    value="{{ old('quantidade_dias') }}">
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-12">
