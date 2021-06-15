@@ -6330,37 +6330,42 @@ small {
 
 .bg-blush {
     background: #e4989a;
-    color: rgba(255, 255, 255, 0.7)
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .bg-pink {
     background: #f66d9b;
-    color: rgba(255, 255, 255, 0.7)
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .bg-indigo {
     background: #9367B4;
-    color: rgba(255, 255, 255, 0.7)
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .bg-azura {
     background: #007FFF;
-    color: rgba(255, 255, 255, 0.7)
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .bg-white {
     background: var(--white-color);
-    color: rgba(255, 255, 255, 0.7)
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .bg-dark {
     background: #17191c;
-    color: rgba(255, 255, 255, 0.7)
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .bg-cyan {
     background: #59C4BC;
-    color: rgba(255, 255, 255, 0.7)
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.bg-ventura {
+    background: #bea313 !important;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .text-info {
@@ -6413,6 +6418,10 @@ small {
 
 .text-ventura {
     color: #bea313 !important;
+}
+
+.text-cinza {
+    color:#444444;
 }
 
 .m-l--125 {

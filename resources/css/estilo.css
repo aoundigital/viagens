@@ -6363,6 +6363,11 @@ small {
     color: rgba(255, 255, 255, 0.7)
 }
 
+.bg-ventura {
+    background: #bea313 !important;
+    color: rgba(255, 255, 255, 0.7);
+}
+
 .text-info {
     color: #3C89DA
 }

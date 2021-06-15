@@ -1,6 +1,6 @@
 @extends('layouts.viagens')
 
-@section('title', 'Sócios')
+@section('title', 'Avaliadores')
 
 @section('content')
 

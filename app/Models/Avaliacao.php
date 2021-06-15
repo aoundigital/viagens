@@ -15,4 +15,15 @@ class Avaliacao extends Model
         'nome_socio',
         'propriedade_id'
     ];
+
+    // 'foreign_key', 'local_key'
+    public function casa()
+    {
+        return $this->hasOne(Casa::class, 'avaliacao_id', 'id');
+    }
+
+    public function barco()
+    {
+        return $this->hasOne(Barco::class, 'avaliacao_id', 'id');
+    }
 }

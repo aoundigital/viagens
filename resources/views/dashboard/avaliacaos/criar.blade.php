@@ -1,6 +1,6 @@
 @extends('layouts.viagens')
 
-@section('title', 'Cadastrar Reembolso')
+@section('title', 'Cadastrar Avaliações')
 
 @section('content')
     <div class="block-header">
@@ -50,34 +50,43 @@
         <div class="col-md-12">
             <div class="card p-5">
                 <h4>Avaliações Cadastradas</h4>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nome</th>
-                            <th scope="col">Detalhes</th>
-                            <th scope="col">Link</th>
-                            <th scope="col">Excluir</th>
-                        </tr>
-                    </thead>
-                    @foreach ($viagem->avaliacao as $avaliacao)
-                        <tbody>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
                             <tr>
-                                <td>{{ $avaliacao->nome_socio }}</td>
-                                <td><a class="btn btn-info">Ver</a></td>
-                                <td>{{"https://pesquisa.avaliacao.info?avaliacao=$avaliacao->id&avaliador=.$avaliacao->socio_id&propriedade=$avaliacao->propriedade_id&viagem=$avaliacao->viagem_id"}}</td>
-                                <td>
-                                    <form action="{{ route('avaliacoes.destroy', $avaliacao->id) }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button class="btn text-danger"
-                                            onclick="return confirm('Quer mesmo deletar esta avaliação?')" type="submit"><i
-                                                class="fas fa-trash-alt"></i> Avaliação</button>
-                                    </form>
-                                </td>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Situação</th>
+                                <th scope="col">Link</th>
+                                <th scope="col">Excluir</th>
                             </tr>
-                        </tbody>
-                    @endforeach
-                </table>
+                        </thead>
+                        @foreach ($viagem->avaliacao as $avaliacao)
+                            <tbody>
+                                <tr>
+                                    <td>{{ $avaliacao->nome_socio }}</td>
+                                    <td>
+                                        {{-- verifica se ja foi feita a avalição --}}
+                                        @if ($avaliacao->casa == null)
+                                            <span class="text-primary">Aguardando</span>
+                                        @else
+                                            <a href="{{ route('avaliacoes.geral', $avaliacao->id) }}" class="btn btn-info">Detalhes</a>
+                                        @endif
+                                    </td>
+                                    <td>{{"https://pesquisa.avaliacao.info?avaliacao=$avaliacao->id&avaliador=$avaliacao->socio_id&propriedade=$avaliacao->propriedade_id&viagem=$avaliacao->viagem_id"}}</td>
+                                    <td>
+                                        <form action="{{ route('avaliacoes.destroy', $avaliacao->id) }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button class="btn text-danger"
+                                                onclick="return confirm('Quer mesmo deletar esta avaliação?')" type="submit"><i
+                                                    class="fas fa-trash-alt"></i> Avaliação</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        @endforeach
+                    </table>
+                </div>
             </div>
         </div>
     </div>

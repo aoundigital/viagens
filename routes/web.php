@@ -21,6 +21,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     // rota de avaliacoes
     Route::delete('avaliacoes/{id}', [AvaliacaoController::class, 'destroy'])->name('avaliacoes.destroy');
     Route::post('avaliacoes', [AvaliacaoController::class, 'store'])->name('avaliacoes.enviar');
+    Route::get('avaliacoes/geral/{id}', [AvaliacaoController::class, 'geral'])->name('avaliacoes.geral');
     Route::get('avaliacoes/criar', [AvaliacaoController::class, 'create'])->name('avaliacoes.criar');
     Route::get('avaliacoes', [AvaliacaoController::class, 'index'])->name('avaliacoes.index');
     // rota de casa

@@ -62,35 +62,37 @@
         </div>
         <div class="col-md-7 col-sm-12">
             <div class="card p-5">
-                <h4>Translados Cadastradas</h4>
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Entrada</th>
-                            <th scope="col">Saida</th>
-                            <th scope="col">Nº Pessoas</th>
-                            <th scope="col">Excluir</th>
-                        </tr>
-                    </thead>
-                    @foreach ($viagem->pernoite as $pernoite)
-                        <tbody>
+                <h4>Pernoites Cadastradas</h4>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
-                                <td>{{ date('d/m/Y', strtotime($pernoite->data_entrada)) }}</td>
-                                <td>{{ date('d/m/Y', strtotime($pernoite->data_saida)) }}</td>
-                                <td>{{ $pernoite->numero_pessoas }}</td>
-                                <td>
-                                    <form action="{{ route('pernoites.destroy', $pernoite->id) }}" method="POST">
-                                        @csrf
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <button class="btn text-danger" onclick="return confirm('Quer mesmo deletar este pernoite?')" type="submit">
-                                            <i class="fas fa-trash-alt"></i> Pernoite
-                                        </button>
-                                    </form>
-                                </td>
+                                <th scope="col">Entrada</th>
+                                <th scope="col">Saida</th>
+                                <th scope="col">Nº Pessoas</th>
+                                <th scope="col">Excluir</th>
                             </tr>
-                        </tbody>
-                    @endforeach
-                </table>
+                        </thead>
+                        @foreach ($viagem->pernoite as $pernoite)
+                            <tbody>
+                                <tr>
+                                    <td>{{ date('d/m/Y', strtotime($pernoite->data_entrada)) }}</td>
+                                    <td>{{ date('d/m/Y', strtotime($pernoite->data_saida)) }}</td>
+                                    <td>{{ $pernoite->numero_pessoas }}</td>
+                                    <td>
+                                        <form action="{{ route('pernoites.destroy', $pernoite->id) }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <button class="btn text-danger" onclick="return confirm('Quer mesmo deletar este pernoite?')" type="submit">
+                                                <i class="fas fa-trash-alt"></i> Pernoite
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        @endforeach
+                    </table>
+                </div>
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 @extends('layouts.viagens')
 
-@section('title', 'Cadastrar nova Viagem')
+@section('title', 'Cadastrar uma nova Viagem')
 
 @section('content')
 

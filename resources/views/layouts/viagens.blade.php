@@ -8,7 +8,7 @@
 <meta name="author" content="Ricardo Aoun">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-<link rel="stylesheet" href="{{ '../css/estilo.css' }}" />
+<link rel="stylesheet" href="{{ 'http://127.0.0.1:8000/css/estilo.css' }}" />
 </head>
 <body>
 
@@ -17,7 +17,7 @@
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
-            <div class="m-t-30"><img src="{{'../images/logo.png'}}" width="220" height="114" alt="Ventura"></div>
+            <div class="m-t-30"><img src="{{'http://127.0.0.1:8000/images/logo.png'}}" width="220" height="114" alt="Ventura"></div>
             <p>Aguarde...</p>
         </div>
     </div>
@@ -68,7 +68,7 @@
         <div id="left-sidebar" class="sidebar">
             {{-- <a href="#" class="menu_toggle"><i class="fa fa-angle-left"></i></a> --}}
             <div class="navbar-brand">
-                <img src="{{'../images/logo.png'}}" alt="Logotipo" class="img-fluid logo">
+                <img src="{{'http://127.0.0.1:8000/images/logo.png'}}" alt="Logotipo" class="img-fluid logo">
                 <button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i class="fa fa-close"></i></button>
             </div>
             <div class="sidebar-scroll">
@@ -114,8 +114,10 @@
 </div>
 
 <!-- Javascript -->
-<script src=" {{ '../js/libscripts.bundle.js' }} "></script>
-<script src=" {{ '../js/vendorscripts.bundle.js' }} "></script>
-<script src=" {{ '../js/mainscripts.bundle.js' }} "></script>
+<script src=" {{ 'http://127.0.0.1:8000/js/libscripts.bundle.js' }} "></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src=" {{ 'http://127.0.0.1:8000/js/vendorscripts.bundle.js' }} "></script>
+<script src=" {{ 'http://127.0.0.1:8000/js/mainscripts.bundle.js' }} "></script>
 </body>
 </html>

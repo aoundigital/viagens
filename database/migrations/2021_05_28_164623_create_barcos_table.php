@@ -31,9 +31,6 @@ class CreateBarcosTable extends Migration
             $table->integer('equipamento_jet');
             $table->integer('equipamento_esquimar');
             $table->integer('equipamento_eagle');
-            $table->integer('ti_internet');
-            $table->integer('ti_telefone');
-            $table->integer('ti_tv');
             $table->unsignedBigInteger('avaliacao_id');//chave estrangeira
             $table->foreign('avaliacao_id')->references('id')->on('avaliacaos')->onDelete('cascade');
             $table->string('ocorrencia_acomodacoes');
