@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 
 class TransladoController extends Controller
 {
+    public $mensagem;
+
     public function index()
     {
         $translados = Translado::all();
@@ -40,21 +42,18 @@ class TransladoController extends Controller
     {
         Translado::create($request->all());
 
-        return redirect()->route('viagens.index');
+        $this->mensagem =  'Translado Criado com Sucesso!';
+        return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
     }
 
     public function destroy(Request $request)
     {
         if (!$traslado = Translado::find($request->id)) {
-            $mensage = 'Este traslado ja foi excluido ou não existe!';
-            return redirect()->route('viagens.index', [
-                'm' => $mensage
-            ]);
+            $this->mensagem = 'Este traslado ja foi excluido ou não existe!';
+            return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
         }
         $traslado->delete();
-        $mensage = 'Excluido com Sucesso!';
-        return redirect()->route('viagens.index', [
-            'm' => $mensage
-        ]);
+        $this->mensagem = 'Excluido com Sucesso!';
+        return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
     }
 }

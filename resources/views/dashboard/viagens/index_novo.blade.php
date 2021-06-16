@@ -10,10 +10,24 @@
                 <a class="btn btn-dark" href="{{ route('viagens.criar') }}">Criar nova Viagem</a>
             </div>
             <div class="col-lg-8 col-md-12 col-sm-12 text-lg-right">
-               <h6> Tabela com {{ $viagens->count() }} @if ($viagens->count() > 1) viagens @else  Viagem @endif </h6>
+               <h6> Tabela com {{ $viagens->count() }} @if ( $viagens->count() > 1 ) viagens @else  Viagem @endif </h6>
             </div>
         </div>
     </div>
+
+    @if(session('mensagem'))
+        <div class="row clearfix">
+            <div class="col-12">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('mensagem') }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    @endif
+
 
     <div class="row clearfix">
         <div class="col-12">

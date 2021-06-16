@@ -12,6 +12,7 @@
             {{-- Envio de Emails --}}
             <form action="{{ route('avaliacao.disparar_casa') }}" method="POST">
                 @csrf
+                <input type="hidden" class="form-control" id="tipo" name="tipo" value="1">
                 <input type="hidden" class="form-control" id="idAvaliacao" name="idAvaliacao" value="{{ $pesquisa->id }}">
                 <input type="hidden" class="form-control" id="mediasCasaAcomodacao" name="mediasCasaAcomodacao" value="{{ $mediasCasaAcomodacao}}">
                 <input type="hidden" class="form-control" id="mediasCasaFuncionarios" name="mediasCasaFuncionarios" value="{{ $mediasCasaFuncionarios}}">

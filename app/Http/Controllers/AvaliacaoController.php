@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\EnvioAvaliacao;
 use Illuminate\Http\Request;
 use App\Models\Avaliacao;
 use App\Models\Propriedade;
 use App\Models\Socio;
 use App\Models\Viagem;
+use Illuminate\Support\Facades\Mail;
 
 class AvaliacaoController extends Controller
 {
+    public $mensagem;
+
     public function index()
     {
         $avaliacaos = Avaliacao::with('casa')->all();
@@ -48,22 +52,19 @@ class AvaliacaoController extends Controller
             'nome_socio' => $nome->nome
         ]));
 
-        return redirect()->route('viagens.index');
+        $this->mensagem =  'Avaliação Criada com Sucesso!';
+        return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
     }
 
     public function destroy(Request $request)
     {
         if (!$avaliacao = Avaliacao::find($request->id)) {
-            $mensage = 'Este avaliacao ja foi excluida ou não existe!';
-            return redirect()->route('viagens.index', [
-                'm' => $mensage
-            ]);
+            $this->mensagem = 'Este avaliacao ja foi excluida ou não existe!';
+            return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
         }
         $avaliacao->delete();
-        $mensage = 'Excluido com Sucesso!';
-        return redirect()->route('viagens.index', [
-            'm' => $mensage
-        ]);
+        $this->mensagem = 'Excluido com Sucesso!';
+        return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
     }
 
     //Geral: para as notas e médias das avaliações
@@ -161,11 +162,19 @@ class AvaliacaoController extends Controller
     //para disparo de emails...
     public function dispararCasa(Request $request)
     {
-        dd($request);
+        $conteudo = $request;
+        // dd($conteudo);
+        Mail::to("criatacom@gmail.com")->send(new EnvioAvaliacao($conteudo));
+        $this->mensagem = "Email enviado!";
+        return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
     }
 
     public function dispararBarco(Request $request)
     {
-        dd($request);
+        $conteudo = $request;
+        // dd($conteudo);
+        Mail::to("criatacom@gmail.com")->send(new EnvioAvaliacao($conteudo));
+        $this->mensagem = "Email enviado!";
+        return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
     }
 }

@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 
 class PernoiteController extends Controller
 {
+    public $mensagem;
+
     public function index()
     {
         $pernoites = Pernoite::all();
@@ -33,21 +35,18 @@ class PernoiteController extends Controller
     {
         Pernoite::create($request->all());
 
-        return redirect()->route('viagens.index');
+        $this->mensagem =  'Pernoite Criada com Sucesso!';
+        return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
     }
 
     public function destroy(Request $request)
     {
         if (!$traslado = Pernoite::find($request->id)) {
-            $mensage = 'Esta pernoite ja foi excluida ou não existe!';
-            return redirect()->route('viagens.index', [
-                'm' => $mensage
-            ]);
+            $this->mensagem = 'Esta pernoite ja foi excluida ou não existe!';
+            return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
         }
         $traslado->delete();
-        $mensage = 'Excluido com Sucesso!';
-        return redirect()->route('viagens.index', [
-            'm' => $mensage
-        ]);
+        $this->mensagem = 'Excluido com Sucesso!';
+        return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
     }
 }

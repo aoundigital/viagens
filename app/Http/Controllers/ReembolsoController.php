@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 
 class ReembolsoController extends Controller
 {
+    public $mensagem;
+
     public function index()
     {
         $reembolsos = Reembolso::all();
@@ -50,21 +52,18 @@ class ReembolsoController extends Controller
             'nome_socio' => $nome->nome
         ]);
 
-        return redirect()->route('viagens.index');
+        $this->mensagem =  'Reembolso Criado com Sucesso!';
+        return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
     }
 
     public function destroy(Request $request)
     {
         if (!$reembolso = Reembolso::find($request->id)) {
-            $mensage = 'Este reembolso ja foi excluida ou não existe!';
-            return redirect()->route('viagens.index', [
-                'm' => $mensage
-            ]);
+            $this->mensagem =  'Este reembolso ja foi excluida ou não existe!';
+            return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
         }
         $reembolso->delete();
-        $mensage = 'Excluido com Sucesso!';
-        return redirect()->route('viagens.index', [
-            'm' => $mensage
-        ]);
+        $this->mensagem =  'Excluido com Sucesso!';
+        return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
     }
 }
