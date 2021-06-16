@@ -66,6 +66,7 @@ class AvaliacaoController extends Controller
         ]);
     }
 
+    //Geral: para as notas e médias das avaliações
     public function geral(Request $request)
     {
         $avaliacao = Avaliacao::with('casa', 'barco')->find($request->id);
@@ -155,5 +156,16 @@ class AvaliacaoController extends Controller
             'mediasCasaEquipamentos' => $mediasCasaEquipamentos,
             'mediasCasaTi' => $mediasCasaTi
         ]);
+    }
+
+    //para disparo de emails...
+    public function dispararCasa(Request $request)
+    {
+        dd($request);
+    }
+
+    public function dispararBarco(Request $request)
+    {
+        dd($request);
     }
 }

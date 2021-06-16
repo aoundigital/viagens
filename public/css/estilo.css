@@ -2387,8 +2387,8 @@ body {
 
 .badge-info {
     background: transparent;
-    border-color: #3C89DA;
-    color: #3C89DA
+    border-color: #004280;
+    color: #004280
 }
 
 .badge-success {
@@ -4316,11 +4316,11 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 #toast-container .toast-info {
-    background-color: #5c8ed4
+    background-color: #004280
 }
 
 #toast-container .toast-info .toast-close-button {
-    color: #2a5ba0
+    color: #004280
 }
 
 #toast-container .toast-success {
@@ -4487,7 +4487,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .progress-bar-info {
-    background-color: #3C89DA
+    background-color: #004280
 }
 
 .progress-transparent.custom-color-blue {
@@ -4729,11 +4729,11 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .blockquote.blockquote-info {
-    border-color: #3C89DA
+    border-color: #004280
 }
 
 .blockquote.blockquote-info small {
-    color: #3C89DA
+    color: #004280
 }
 
 .blockquote.blockquote-danger {
@@ -6267,7 +6267,7 @@ ul.list-justify.large-number span {
 }
 
 .text-info {
-    color: #3C89DA
+    color: #004280 !important;
 }
 
 .text-success {
@@ -6299,8 +6299,8 @@ small {
 }
 
 .bg-info {
-    background: #3C89DA;
-    color: rgba(255, 255, 255, 0.7)
+    background: #004280 !important;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .bg-red {
@@ -6369,7 +6369,7 @@ small {
 }
 
 .text-info {
-    color: #3C89DA
+    color: #004280 !important;
 }
 
 .text-red {
@@ -8185,8 +8185,8 @@ hr {
 }
 
 .table .thead-info th {
-    color: #3C89DA;
-    border-color: #3C89DA
+    color: #004280;
+    border-color: #004280
 }
 
 .table .thead-purple th {

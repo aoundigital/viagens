@@ -4,10 +4,30 @@
 
 @section('content')
 
+{{-- Header --}}
 <div class="block-header">
     <div class="row clearfix">
         <div class="col-lg-7 col-md-8 col-sm-12">
             <h6 class="text-info">Avaliação | {{ $pesquisa->nome_socio }} | {{ $nomeProrpiedade }}</h6>
+            {{-- Envio de Email --}}
+            <form action="{{ route('avaliacao.disparar_barco') }}" method="POST">
+                @csrf
+                <input type="hidden" class="form-control" id="idAvaliacao" name="idAvaliacao" value="{{ $pesquisa->id }}">
+                <input type="hidden" class="form-control" id="mediasCasaAcomodacao" name="mediasCasaAcomodacao" value="{{ $mediasCasaAcomodacao}}">
+                <input type="hidden" class="form-control" id="mediasCasaFuncionarios" name="mediasCasaFuncionarios" value="{{ $mediasCasaFuncionarios}}">
+                <input type="hidden" class="form-control" id="mediasCasaEquipamentos" name="mediasCasaEquipamentos" value="{{ $mediasCasaEquipamentos}}">
+                <input type="hidden" class="form-control" id="mediasCasaTi" name="mediasCasaTi" value="{{ $mediasCasaTi}}">
+                <input type="hidden" class="form-control" id="nomeSocio" name="nomeSocio" value="{{ $pesquisa->nome_socio}}">
+                <input type="hidden" class="form-control" id="nomeProrpiedade" name="nomeProrpiedade" value="{{ $nomeProrpiedade}}">
+                <input type="hidden" class="form-control" id="mediasBarcoAcomodacao" name="mediasBarcoAcomodacao" value="{{ $mediasBarcoAcomodacao}}">
+                <input type="hidden" class="form-control" id="mediasBarcoFuncionarios" name="mediasBarcoFuncionarios" value="{{ $mediasBarcoFuncionarios}}">
+                @if ($idPropriedade == 3)
+                    <input type="hidden" class="form-control" id="mediasBarcoEquipamentosAvare" name="mediasBarcoEquipamentosAvare" value="{{ $mediasBarcoEquipamentosAvare}}">
+                @else
+                    <input type="hidden" class="form-control" id="mediasBarcoEquipamentosAngra" name="mediasBarcoEquipamentosAngra" value="{{ $mediasBarcoEquipamentosAngra}}">
+                @endif
+                <button class="btn btn-primary" type="submit">Enviar Email</button>
+            </form>
         </div>
         <div class="col-lg-5 col-md-4 col-sm-12 text-lg-right">
             <a class="btn btn-outline-dark" href="{{ url()->previous() }}">
@@ -16,6 +36,7 @@
     </div>
 </div>
 
+{{-- Médias --}}
 <div class="row clearfix">
     <div class="col-md-12 col-sm-12">
         <div class="text-center">
@@ -41,9 +62,9 @@
                     @endif
                 </div>
             </div>
-            <div class="mt-3">
-                <button class="btn btn-outline-dark" data-toggle="collapse" href="#notasCasa" role="button" aria-expanded="false" aria-controls="notasCasa">Notas de Casa</button>
-                <button class="btn btn-outline-info ml-4" data-toggle="collapse" href="#notasBarco" role="button" aria-expanded="false" aria-controls="notasBarco">Notas de Barco</button>
+            <div class="mt-4">
+                <button class="btn btn-default" data-toggle="collapse" href="#notasCasa" role="button" aria-expanded="false" aria-controls="notasCasa">Notas de Casa</button>
+                <button class="btn btn-default ml-4" data-toggle="collapse" href="#notasBarco" role="button" aria-expanded="false" aria-controls="notasBarco">Notas de Barco</button>
             </div>
         </div>
     </div>
