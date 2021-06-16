@@ -18,10 +18,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('viagens', [ViagemController::class, 'store'])->name('viagens.enviar');
     Route::get('viagens/criar', [ViagemController::class, 'create'])->name('viagens.criar');
     Route::get('viagens', [ViagemController::class, 'index'])->name('viagens.index');
-    // rota de avaliacoes
-    Route::delete('avaliacoes/{id}', [AvaliacaoController::class, 'destroy'])->name('avaliacoes.destroy');
+    // rota de avaliacoes EMAILS
+    Route::post('avaliacao/enviar_link', [AvaliacaoController::class, 'enviarLink'])->name('avaliacao.enviar_link');
     Route::post('avaliacao/disparar_casa', [AvaliacaoController::class, 'dispararCasa'])->name('avaliacao.disparar_casa');
     Route::post('avaliacao/disparar_barco', [AvaliacaoController::class, 'dispararBarco'])->name('avaliacao.disparar_barco');
+    // rota de avaliacoes
+    Route::delete('avaliacoes/{id}', [AvaliacaoController::class, 'destroy'])->name('avaliacoes.destroy');
     Route::post('avaliacoes', [AvaliacaoController::class, 'store'])->name('avaliacoes.enviar');
     Route::get('avaliacoes/geral/{id}', [AvaliacaoController::class, 'geral'])->name('avaliacoes.geral');
     Route::get('avaliacoes/criar', [AvaliacaoController::class, 'create'])->name('avaliacoes.criar');

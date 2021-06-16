@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\EnvioAvaliacao;
+use App\Mail\EnvioLink;
 use Illuminate\Http\Request;
 use App\Models\Avaliacao;
 use App\Models\Propriedade;
@@ -168,12 +169,20 @@ class AvaliacaoController extends Controller
         $this->mensagem = "Email enviado!";
         return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
     }
-
     public function dispararBarco(Request $request)
     {
         $conteudo = $request;
         // dd($conteudo);
         Mail::to("criatacom@gmail.com")->send(new EnvioAvaliacao($conteudo));
+        $this->mensagem = "Email enviado!";
+        return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
+    }
+    public function enviarLink(Request $request)
+    {
+        $socio = Socio::find($request->idSocio);
+        $conteudo = $request;
+        Mail::to($socio->email)->send(new EnvioLink($conteudo));
+
         $this->mensagem = "Email enviado!";
         return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
     }

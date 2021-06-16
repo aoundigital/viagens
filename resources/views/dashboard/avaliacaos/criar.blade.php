@@ -56,7 +56,8 @@
                             <tr>
                                 <th scope="col">Nome</th>
                                 <th scope="col">Situação</th>
-                                <th scope="col">Link</th>
+                                <th scope="col">Link da Avaliação</th>
+                                <th scope="col">Distribuir</th>
                                 <th scope="col">Excluir</th>
                             </tr>
                         </thead>
@@ -72,9 +73,25 @@
                                             <a href="{{ route('avaliacoes.geral', $avaliacao->id) }}" class="btn btn-info">Detalhes</a>
                                         @endif
                                     </td>
-                                    <td>{{"https://pesquisa.avaliacao.info?avaliacao=$avaliacao->id&avaliador=$avaliacao->socio_id&propriedade=$avaliacao->propriedade_id&viagem=$avaliacao->viagem_id"}}</td>
                                     <td>
-                                        <form action="{{ route('avaliacoes.destroy', $avaliacao->id) }}" method="POST">
+                                        {{"https://pesquisa.avaliacao.info?avaliacao=$avaliacao->id&avaliador=$avaliacao->socio_id&propriedade=$avaliacao->propriedade_id&viagem=$avaliacao->viagem_id"}}
+                                    </td>
+                                    <td>
+                                        @if($avaliacao->casa == null)
+                                        <form id="formEnvio" action="{{ route('avaliacao.enviar_link') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="linkagem" id="linkagem" value="{{"https://pesquisa.avaliacao.info?avaliacao=$avaliacao->id&avaliador=$avaliacao->socio_id&propriedade=$avaliacao->propriedade_id&viagem=$avaliacao->viagem_id"}}">
+                                            <input type="hidden" class="form-control" id="idAvaliacao" name="idAvaliacao" value="{{ $avaliacao->id }}">
+                                            <input type="hidden" class="form-control" id="idSocio" name="idSocio" value="{{ $avaliacao->socio_id }}">
+                                            <input type="hidden" class="form-control" id="nomeSocio" name="nomeSocio" value="{{ $avaliacao->nome_socio }}">
+                                            <button class="btn btn-primary"  type="submit">Enviar por email</button>
+                                        </form>
+                                        @else
+                                            Avaliação Completa
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <form id="formDel" action="{{ route('avaliacoes.destroy', $avaliacao->id) }}" method="POST">
                                             @csrf
                                             <input type="hidden" name="_method" value="DELETE">
                                             <button class="btn text-danger"
