@@ -19,7 +19,10 @@
         @foreach ($socios as $socio)
             <div class="col-lg-6 col-md-6 col-sm-12">
                 <div class="card p-5">
-                       <h4 class="text-ventura mb-3">{{ $socio->nome }}</h4>
+                       <h4 class="text-ventura mb-3">
+                           {{ $socio->nome }}<br>
+                           <small class="pequeno">{{ $socio->email }}</small>
+                    </h4>
                        <p>Quant. de Avaliações: <b>{{ $socio->avaliacao->count() }} </b></p>
                 </div>
             </div>

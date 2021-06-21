@@ -15,6 +15,7 @@
         É só clicar no botão abaixo, obrigado!
     </p>
     <br>
+    <br>
     <a href="{{ $conteudo['linkagem'] }}" class="btn btn-primary">Avaliar Agora!</a>
     <br>
     <br>

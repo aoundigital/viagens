@@ -87,6 +87,9 @@
                         <li class="{{ (request()->is('socios')) ? 'active' : '' }}">
                             <a href="{{ route('socios.index') }}"><i class="fa fa-window-restore"></i> <span>Avaliadores</span></a>
                         </li>
+                        <li class="{{ (request()->is('emails')) ? 'active' : '' }}">
+                            <a href="{{ route('emails.index') }}"><i class="fa fa-window-restore"></i> <span>E-mails</span></a>
+                        </li>
                         <li>
                             <a href="#charts" class="has-arrow"><i class="fa fa-arrows-v"></i><span>Relatórios</span></a>
                             <ul>

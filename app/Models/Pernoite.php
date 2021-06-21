@@ -16,4 +16,10 @@ class Pernoite extends Model
         'viagem_id',
         'socio_id'
     ];
+
+    // 'foreign_key', 'local_key'
+    public function socio()
+    {
+        return $this->hasOne(Socio::class, 'id', 'socio_id');
+    }
 }

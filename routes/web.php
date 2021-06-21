@@ -4,6 +4,7 @@ use App\Http\Controllers\AvaliacaoController;
 use App\Http\Controllers\BarcoController;
 use App\Http\Controllers\CasaController;
 use App\Http\Controllers\ConvidadoController;
+use App\Http\Controllers\EmailsController;
 use App\Http\Controllers\PernoiteController;
 use App\Http\Controllers\PropriedadeController;
 use App\Http\Controllers\ReembolsoController;
@@ -55,6 +56,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::post('convidados', [ConvidadoController::class, 'store'])->name('convidados.enviar');
     Route::get('convidados/criar', [ConvidadoController::class, 'create'])->name('convidados.criar');
     Route::get('convidados', [ConvidadoController::class, 'index'])->name('convidados.index');
+
+    // Emails
+    Route::delete('emails/{id}', [EmailsController::class, 'destroy'])->name('emails.destroy');
+    Route::post('emails', [EmailsController::class, 'store'])->name('emails.enviar');
+    Route::get('emails', [EmailsController::class, 'index'])->name('emails.index');
+
     //rota de registro de usuário
     Route::get('registar', function () {
         return view('auth.register');

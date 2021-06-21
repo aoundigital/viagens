@@ -20,6 +20,11 @@
                 <input type="hidden" class="form-control" id="mediasCasaTi" name="mediasCasaTi" value="{{ $mediasCasaTi}}">
                 <input type="hidden" class="form-control" id="nomeSocio" name="nomeSocio" value="{{ $pesquisa->nome_socio}}">
                 <input type="hidden" class="form-control" id="nomeProrpiedade" name="nomeProrpiedade" value="{{ $nomeProrpiedade}}">
+                {{-- Ocorrencias Casa --}}
+                <input type="hidden" class="form-control" id="ocorrenciasCasaAcomodacao" name="ocorrenciasCasaAcomodacao" value="{{$pesquisa->casa->ocorrencia_acomodacoes}}">
+                <input type="hidden" class="form-control" id="ocorrenciasCasaFuncionarios" name="ocorrenciasCasaFuncionarios" value="{{$pesquisa->casa->ocorrencia_funcionarios}} ">
+                <input type="hidden" class="form-control" id="ocorrenciasCasaEquipamentos" name="ocorrenciasCasaEquipamentos" value="{{$pesquisa->casa->ocorrencia_equipamentos}} ">
+                <input type="hidden" class="form-control" id="ocorrenciasCasaTi" name="ocorrenciasCasaTi" value="{{$pesquisa->casa->ocorrencia_ti}}">
                 <button class="btn btn-primary" type="submit">Enviar Email</button>
             </form>
         </div>

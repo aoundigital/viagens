@@ -9,8 +9,8 @@
 <body>
     <h1>Avaliação</h1>
     <ul>
-        <li>Propriedade: {{ $conteudo['nomeProrpiedade'] }}</li>
-        <li>Sócio: {{ $conteudo['nomeSocio'] }}</li>
+        <h4>Propriedade: {{ $conteudo['nomeProrpiedade'] }}</h4>
+        <h4>Sócio: {{ $conteudo['nomeSocio'] }}</h4>
         <ul>
             <h2>Médias das Notas</h2>
             <hr>
@@ -19,6 +19,14 @@
             <li>Funcionários: {{ $conteudo['mediasCasaFuncionarios'] }}</li>
             <li>Equipamentos: {{ $conteudo['mediasCasaEquipamentos'] }}</li>
             <li>Tecnologia TI: {{ $conteudo['mediasCasaTi'] }}</li>
+            <hr>
+            <li>Ocorrências:</li>
+            <ul>
+                <li>Acomodações: {{ $conteudo['ocorrenciasCasaAcomodacao'] }}</li>
+                <li>Funcionários: {{ $conteudo['ocorrenciasCasaFuncionarios'] }}</li>
+                <li>Equipamentos: {{ $conteudo['ocorrenciasCasaEquipamentos'] }}</li>
+                <li>Tecnologia TI: {{ $conteudo['ocorrenciasCasaTi'] }}</li>
+            </ul>
             <hr>
             <h3>Barco</h3>
             <li>Acomodações: {{ $conteudo['mediasBarcoAcomodacao'] }}</li>
@@ -29,7 +37,13 @@
                 @else
                     {{ $conteudo['mediasBarcoEquipamentosAvare'] }}
                 @endif
-            </li>
+            </li><hr>
+            <li>Ocorrências:</li>
+            <ul>
+                <li>Acomodações: {{ $conteudo['ocorrenciasbarcoAcomodacao'] }}</li>
+                <li>Funcionários: {{ $conteudo['ocorrenciasbarcoFuncionarios'] }}</li>
+                <li>Tecnologia TI: {{ $conteudo['ocorrenciasbarcoTi'] }}</li>
+            </ul>
         </ul>
     </ul>
 </body>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pernoite;
 use App\Models\Propriedade;
+use App\Models\Socio;
 use App\Models\Viagem;
 use Illuminate\Http\Request;
 
@@ -27,7 +28,8 @@ class PernoiteController extends Controller
 
         return view('dashboard.pernoites.criar', [
             'viagem' => $viage,
-            'nomeProrpiedade' => $propriedade->nome
+            'nomeProrpiedade' => $propriedade->nome,
+            // 'nomeSócio' =>
         ]);
     }
 

@@ -6,6 +6,7 @@ use App\Mail\EnvioAvaliacao;
 use App\Mail\EnvioLink;
 use Illuminate\Http\Request;
 use App\Models\Avaliacao;
+use App\Models\Emails;
 use App\Models\Propriedade;
 use App\Models\Socio;
 use App\Models\Viagem;
@@ -164,16 +165,34 @@ class AvaliacaoController extends Controller
     public function dispararCasa(Request $request)
     {
         $conteudo = $request;
-        // dd($conteudo);
-        Mail::to("criatacom@gmail.com")->send(new EnvioAvaliacao($conteudo));
+        $emails = Emails::all();
+        $moreUsers = [];
+        foreach ($emails as $emai) {
+            $moreUsers[] = $emai->email;
+        }
+        if ($moreUsers) {
+            Mail::to("criatacom@gmail.com")->cc($moreUsers)->send(new EnvioAvaliacao($conteudo));
+        } else {
+
+            Mail::to("criatacom@gmail.com")->send(new EnvioAvaliacao($conteudo));
+        }
         $this->mensagem = "Email enviado!";
         return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
     }
     public function dispararBarco(Request $request)
     {
         $conteudo = $request;
-        // dd($conteudo);
-        Mail::to("criatacom@gmail.com")->send(new EnvioAvaliacao($conteudo));
+        $emails = Emails::all(); //pega todos os emails cadastrados
+        $moreUsers = [];
+        foreach ($emails as $emai) {
+            $moreUsers[] = $emai->email;
+        }
+        if ($moreUsers) {
+            Mail::to("criatacom@gmail.com")->cc($moreUsers)->send(new EnvioAvaliacao($conteudo));
+        } else {
+
+            Mail::to("criatacom@gmail.com")->send(new EnvioAvaliacao($conteudo));
+        }
         $this->mensagem = "Email enviado!";
         return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
     }

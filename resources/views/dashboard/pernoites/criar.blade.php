@@ -67,6 +67,7 @@
                     <table class="table table-striped">
                         <thead>
                             <tr>
+                                <th scope="col">Anfitrião</th>
                                 <th scope="col">Entrada</th>
                                 <th scope="col">Saida</th>
                                 <th scope="col">Nº Pessoas</th>
@@ -76,6 +77,23 @@
                         @foreach ($viagem->pernoite as $pernoite)
                             <tbody>
                                 <tr>
+                                    <td><b>
+                                        @switch($pernoite->socio_id)
+                                            @case(1)
+                                                Carlos
+                                                @break
+                                            @case(2)
+                                                José Luiz
+                                                @break
+                                            @case(3)
+                                                Patrícia
+                                                @break
+                                            @case(4)
+                                                Paula
+                                                @break
+                                        @endswitch
+                                        </b>
+                                    </td>
                                     <td>{{ date('d/m/Y', strtotime($pernoite->data_entrada)) }}</td>
                                     <td>{{ date('d/m/Y', strtotime($pernoite->data_saida)) }}</td>
                                     <td>{{ $pernoite->numero_pessoas }}</td>

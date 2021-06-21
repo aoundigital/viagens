@@ -10422,3 +10422,7 @@ hr {
     *zoom: 1;
     *display: block
 }
+
+.pequeno {
+    font-size: 0.55em;
+}

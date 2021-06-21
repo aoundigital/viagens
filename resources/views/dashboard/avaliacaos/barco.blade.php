@@ -27,6 +27,16 @@
                 @else
                     <input type="hidden" class="form-control" id="mediasBarcoEquipamentosAngra" name="mediasBarcoEquipamentosAngra" value="{{ $mediasBarcoEquipamentosAngra}}">
                 @endif
+                {{-- Ocorrencias Casa --}}
+                <input type="hidden" class="form-control" id="ocorrenciasCasaAcomodacao" name="ocorrenciasCasaAcomodacao" value="{{$pesquisa->casa->ocorrencia_acomodacoes}}">
+                <input type="hidden" class="form-control" id="ocorrenciasCasaFuncionarios" name="ocorrenciasCasaFuncionarios" value="{{$pesquisa->casa->ocorrencia_funcionarios}}">
+                <input type="hidden" class="form-control" id="ocorrenciasCasaEquipamentos" name="ocorrenciasCasaEquipamentos" value="{{$pesquisa->casa->ocorrencia_equipamentos}}">
+                <input type="hidden" class="form-control" id="ocorrenciasCasaTi" name="ocorrenciasCasaTi" value="{{$pesquisa->casa->ocorrencia_ti}}">
+                {{-- Ocorrencias Barco --}}
+                <input type="hidden" class="form-control" id="ocorrenciasbarcoAcomodacao" name="ocorrenciasbarcoAcomodacao" value="{{$pesquisa->barco->ocorrencia_acomodacoes}}">
+                <input type="hidden" class="form-control" id="ocorrenciasbarcoFuncionarios" name="ocorrenciasbarcoFuncionarios" value="{{$pesquisa->barco->ocorrencia_funcionarios}}">
+                <input type="hidden" class="form-control" id="ocorrenciasbarcoTi" name="ocorrenciasbarcoTi" value="{{$pesquisa->barco->ocorrencia_ti}}">
+                {{-- Final Ocorrencias --}}
                 <button class="btn btn-primary" type="submit">Enviar Email</button>
             </form>
         </div>
