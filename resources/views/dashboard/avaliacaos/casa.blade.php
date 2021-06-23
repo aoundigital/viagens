@@ -43,10 +43,10 @@
             <div class="bg-ventura">
                 <p class="pt-4">CASA</p>
                 <div class="row pb-4">
-                    <div class="col-md-3 col-sm-6">Acomodações: {{ $mediasCasaAcomodacao }}</div>
-                    <div class="col-md-3 col-sm-6">Funcionarios: {{ $mediasCasaFuncionarios }}</div>
-                    <div class="col-md-3 col-sm-6">Equipamentos: {{ $mediasCasaEquipamentos }}</div>
-                    <div class="col-md-3 col-sm-6">Tecnologia da Informação: {{ $mediasCasaTi }}</div>
+                    <div class="col-md-3 col-sm-6">Acomodações: {{ number_format($mediasCasaAcomodacao, 2 ) }}</div>
+                    <div class="col-md-3 col-sm-6">Funcionarios: {{ number_format($mediasCasaFuncionarios, 2 ) }}</div>
+                    <div class="col-md-3 col-sm-6">Equipamentos: {{ number_format($mediasCasaEquipamentos, 2 ) }}</div>
+                    <div class="col-md-3 col-sm-6">Tecnologia da Informação: {{ number_format($mediasCasaTi, 2 ) }}</div>
                 </div>
             </div>
             <button class="btn btn-default mt-3" data-toggle="collapse" href="#notasCasa" role="button" aria-expanded="false" aria-controls="notasCasa">Notas da Casa</button>
@@ -93,7 +93,7 @@
                             </tr>
                             <tr class="text-info">
                                 <td><strong>Média Geral</strong></td>
-                                <td><strong>{{ $mediasCasaAcomodacao }}</strong></td>
+                                <td><strong>{{ number_format($mediasCasaAcomodacao, 2 ) }}</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -138,7 +138,7 @@
                             </tr>
                             <tr class="text-info">
                                 <td><strong>Média Geral</strong></td>
-                                <td><strong>{{ $mediasCasaFuncionarios }}</strong>
+                                <td><strong>{{ number_format($mediasCasaFuncionarios, 2 ) }}</strong>
                                 </td>
                             </tr>
                         </tbody>
@@ -184,7 +184,7 @@
                             </tr>
                             <tr class="text-info">
                                 <td><strong>Média Geral</strong></td>
-                                <td><strong>{{ $mediasCasaEquipamentos }}</strong>
+                                <td><strong>{{ number_format($mediasCasaEquipamentos, 2 ) }}</strong>
                                 </td>
                             </tr>
                         </tbody>
@@ -221,7 +221,7 @@
                             </tr>
                             <tr class="text-info">
                                 <td><strong>Média Geral</strong></td>
-                                <td><strong>{{ $mediasCasaTi }}</strong>
+                                <td><strong>{{ number_format($mediasCasaTi, 2 ) }}</strong>
                                 </td>
                             </tr>
                         </tbody>

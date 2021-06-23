@@ -55,21 +55,21 @@
             <div class="bg-ventura">
                 <p class="pt-4">CASA</p>
                 <div class="row pb-4">
-                    <div class="col-md-3 col-sm-6">Acomodações: {{ $mediasCasaAcomodacao }}</div>
-                    <div class="col-md-3 col-sm-6">Funcionarios: {{ $mediasCasaFuncionarios }}</div>
-                    <div class="col-md-3 col-sm-6">Equipamentos: {{ $mediasCasaEquipamentos }}</div>
-                    <div class="col-md-3 col-sm-6">Tecnologia da Informação: {{ $mediasCasaTi }}</div>
+                    <div class="col-md-3 col-sm-6">Acomodações: {{ number_format($mediasCasaAcomodacao, 2 ) }}</div>
+                    <div class="col-md-3 col-sm-6">Funcionarios: {{ number_format($mediasCasaFuncionarios, 2 ) }}</div>
+                    <div class="col-md-3 col-sm-6">Equipamentos: {{ number_format($mediasCasaEquipamentos, 2 ) }}</div>
+                    <div class="col-md-3 col-sm-6">Tecnologia da Informação: {{ number_format($mediasCasaTi, 2 ) }}</div>
                 </div>
             </div>
             <div class="bg-info">
                 <p class="pt-4">BARCO</p>
                 <div class="row pb-4">
-                    <div class="col-md-4 col-sm-6">Acomodações: {{ $mediasBarcoAcomodacao }}</div>
-                    <div class="col-md-4 col-sm-6">Funcionarios: {{ $mediasBarcoFuncionarios }}</div>
+                    <div class="col-md-4 col-sm-6">Acomodações: {{ number_format($mediasBarcoAcomodacao, 2 ) }}</div>
+                    <div class="col-md-4 col-sm-6">Funcionarios: {{ number_format($mediasBarcoFuncionarios, 2 ) }}</div>
                     @if ($idPropriedade == 3)
-                    <div class="col-md-4 col-sm-6">Equipamentos: {{ $mediasBarcoEquipamentosAvare }}</div>
+                    <div class="col-md-4 col-sm-6">Equipamentos: {{ number_format($mediasBarcoEquipamentosAvare, 2 ) }}</div>
                     @else
-                    <div class="col-md-4 col-sm-6">Equipamentos: {{ $mediasBarcoEquipamentosAngra }}</div>
+                    <div class="col-md-4 col-sm-6">Equipamentos: {{ number_format($mediasBarcoEquipamentosAngra, 2 ) }}</div>
                     @endif
                 </div>
             </div>
@@ -120,7 +120,7 @@
                             </tr>
                             <tr class="text-info">
                                 <td><strong>Média Geral</strong></td>
-                                <td><strong>{{ $mediasCasaAcomodacao }}</strong></td>
+                                <td><strong>{{ number_format($mediasCasaAcomodacao, 2 ) }}</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -165,7 +165,7 @@
                             </tr>
                             <tr class="text-info">
                                 <td><strong>Média Geral</strong></td>
-                                <td><strong>{{ $mediasCasaFuncionarios }}</strong>
+                                <td><strong>{{ number_format($mediasCasaFuncionarios, 2 ) }}</strong>
                                 </td>
                             </tr>
                         </tbody>
@@ -211,7 +211,7 @@
                             </tr>
                             <tr class="text-info">
                                 <td><strong>Média Geral</strong></td>
-                                <td><strong>{{ $mediasCasaEquipamentos }}</strong>
+                                <td><strong>{{ number_format($mediasCasaEquipamentos, 2 ) }}</strong>
                                 </td>
                             </tr>
                         </tbody>
@@ -248,7 +248,7 @@
                             </tr>
                             <tr class="text-info">
                                 <td><strong>Média Geral</strong></td>
-                                <td><strong>{{ $mediasCasaTi }}</strong>
+                                <td><strong>{{ number_format($mediasCasaTi, 2 ) }}</strong>
                                 </td>
                             </tr>
                         </tbody>
@@ -300,7 +300,7 @@
                             </tr>
                             <tr class="text-info">
                                 <td><strong>Média Geral</strong></td>
-                                <td><strong>{{ $mediasBarcoAcomodacao }}</strong></td>
+                                <td><strong>{{ number_format($mediasBarcoAcomodacao, 2 ) }}</strong></td>
                             </tr>
                         </tbody>
                     </table>
@@ -344,7 +344,7 @@
                             </tr>
                             <tr class="text-info">
                                 <td><strong>Média Geral</strong></td>
-                                <td><strong>{{ $mediasBarcoFuncionarios }}</strong>
+                                <td><strong>{{ number_format($mediasBarcoFuncionarios, 2 ) }}</strong>
                                 </td>
                             </tr>
                         </tbody>
@@ -401,9 +401,9 @@
                             <tr class="text-info">
                                 <td><strong>Média Geral</strong></td>
                                 @if ($idPropriedade == 3)
-                                <td><strong>{{ $mediasBarcoEquipamentosAvare }}</strong>
+                                <td><strong>{{ number_format($mediasBarcoEquipamentosAvare , 2 )}}</strong>
                                 @else
-                                <td><strong>{{ $mediasBarcoEquipamentosAngra }}</strong>
+                                <td><strong>{{ number_format($mediasBarcoEquipamentosAngra , 2 )}}</strong>
                                 @endif
                                 </td>
                             </tr>
