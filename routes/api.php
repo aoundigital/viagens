@@ -3,17 +3,16 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+Route::resource('barcos', \App\Http\Controllers\BarcoController::class);
+Route::resource('casa', \App\Http\Controllers\CasaController::class);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// rota de casa
+Route::post('casas' , [\App\Http\Controllers\CasaController::class, 'create']);
+Route::get('casas', [\App\Http\Controllers\CasaController::class, 'index']);
+
+// rota de barco
+Route::post('barcos', [\App\Http\Controllers\BarcoController::class, 'create']);
+Route::get('barcos', [\App\Http\Controllers\BarcoController::class, 'index']);
+
+//verificar a avaliação
+Route::get('avalia-casa/{id}', [\App\Http\Controllers\AvaliacaoController::class, 'avaliaCasa']);

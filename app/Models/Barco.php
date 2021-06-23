@@ -31,4 +31,12 @@ class Barco extends Model
         'ocorrencia_funcionarios',
         'ocorrencia_equipamentos',
     ];
+
+    public function rules()
+    {
+        return [
+            'avaliacao_id' => 'required',
+        ];
+    }
+
 }

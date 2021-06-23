@@ -5,14 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Barco;
 use Illuminate\Http\Request;
 
-class BarcoController extends Controller
+class BarcoController extends MasterApiController
 {
-    public function index()
+    protected $model;
+    public function __construct(Barco $barco, Request $request)
     {
-        $barcos = Barco::all();
-
-        return view('dashboard.barcos.index', [
-            'barcos' => $barcos
-        ]);
+        $this->model = $barco;
+        $this->request = $request;
     }
 }

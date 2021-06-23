@@ -5,14 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Casa;
 use Illuminate\Http\Request;
 
-class CasaController extends Controller
+class CasaController extends MasterApiController
 {
-    public function index()
+    protected $model;
+    public function __construct(Casa $casa, Request $request)
     {
-        $casas = Casa::all();
-
-        return view('dashboard.casas.index', [
-            'casas' => $casas
-        ]);
+        $this->model = $casa;
+        $this->request = $request;
     }
 }

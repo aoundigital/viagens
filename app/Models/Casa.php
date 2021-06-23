@@ -34,4 +34,11 @@ class Casa extends Model
         'ocorrencia_equipamentos',
         'ocorrencia_ti',
     ];
+
+    public function rules()
+    {
+        return [
+            'avaliacao_id' => 'required',
+        ];
+    }
 }

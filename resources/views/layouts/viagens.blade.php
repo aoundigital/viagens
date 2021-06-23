@@ -8,7 +8,7 @@
 <meta name="author" content="Ricardo Aoun">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
-<link rel="stylesheet" href="{{ 'http://127.0.0.1:8000/css/estilo.css' }}" />
+<link rel="stylesheet" href="{{ URL::asset('css/estilo.css') }}" />
 </head>
 <body>
 
@@ -17,7 +17,7 @@
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
-            <div class="m-t-30"><img src="{{'http://127.0.0.1:8000/images/logo.png'}}" width="220" height="114" alt="Ventura"></div>
+            <div class="m-t-30"><img src="{{ URL::asset('images/logo.png') }}" width="220" height="114" alt="Ventura"></div>
             <p>Aguarde...</p>
         </div>
     </div>
@@ -117,10 +117,10 @@
 </div>
 
 <!-- Javascript -->
-<script src=" {{ 'http://127.0.0.1:8000/js/libscripts.bundle.js' }} "></script>
+<script src=" {{ URL::asset('js/libscripts.bundle.js') }} "></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src=" {{ 'http://127.0.0.1:8000/js/vendorscripts.bundle.js' }} "></script>
-<script src=" {{ 'http://127.0.0.1:8000/js/mainscripts.bundle.js' }} "></script>
+<script src=" {{ URL::asset('js/vendorscripts.bundle.js') }} "></script>
+<script src=" {{ URL::asset('js/mainscripts.bundle.js') }} "></script>
 </body>
 </html>

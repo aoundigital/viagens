@@ -172,12 +172,13 @@ class AvaliacaoController extends Controller
         }
         if ($moreUsers) {
             Mail::to("criatacom@gmail.com")->cc($moreUsers)->send(new EnvioAvaliacao($conteudo));
+            $this->mensagem = "Email enviado!";
+            return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
         } else {
-
             Mail::to("criatacom@gmail.com")->send(new EnvioAvaliacao($conteudo));
+            $this->mensagem = "Email enviado!";
+            return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
         }
-        $this->mensagem = "Email enviado!";
-        return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
     }
     public function dispararBarco(Request $request)
     {
@@ -189,12 +190,14 @@ class AvaliacaoController extends Controller
         }
         if ($moreUsers) {
             Mail::to("criatacom@gmail.com")->cc($moreUsers)->send(new EnvioAvaliacao($conteudo));
+            $this->mensagem = "Email enviado!";
+            return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
         } else {
-
             Mail::to("criatacom@gmail.com")->send(new EnvioAvaliacao($conteudo));
+            $this->mensagem = "Email enviado!";
+            return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
         }
-        $this->mensagem = "Email enviado!";
-        return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
+
     }
     public function enviarLink(Request $request)
     {
@@ -204,5 +207,11 @@ class AvaliacaoController extends Controller
 
         $this->mensagem = "Email enviado!";
         return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
+    }
+
+    public function avaliaCasa($id)
+    {
+        $data = Avaliacao::with('casa')->find($id);
+        return response()->json($data);
     }
 }
