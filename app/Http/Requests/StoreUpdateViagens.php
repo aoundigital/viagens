@@ -24,7 +24,7 @@ class StoreUpdateViagens extends FormRequest
     public function rules()
     {
         return [
-            'quantidade_dias' => 'required',
+            // 'quantidade_dias' => 'required',
             'data_entrada' => 'required',
             'data_saida' => 'required',
             'propriedade_id' => 'required',

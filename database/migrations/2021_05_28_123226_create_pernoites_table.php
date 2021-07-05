@@ -17,6 +17,7 @@ class CreatePernoitesTable extends Migration
             $table->id();
             $table->date('data_entrada');
             $table->date('data_saida');
+            $table->integer('dias');
             $table->integer('numero_pessoas');
             $table->unsignedBigInteger('viagem_id');//chave estrangeira
             $table->foreign('viagem_id')->references('id')->on('viagems')->onDelete('cascade');

@@ -24,12 +24,12 @@
         </ul>
     @endif
     <div class="row clearfix mt-3">
-        <div class="col-md-6 col-sm-12">
+        <div class="col-md-8 col-sm-12">
             <div class="card p-5">
                 <form action="{{ route('viagens.enviar') }}" method="POST">
                     <div class="row clearfix">
                         @csrf
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-md-4 col-sm-12">
                             <div class="form-group">
                                 <label for="propriedade_id">Propriedade</label>
                                 <select class="form-control" name="propriedade_id" id="propriedade_id">
@@ -40,21 +40,14 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-12">
-                            <div class="form-group">
-                                <label for="quantidade_dias">Quantidade Dias</label>
-                                <input type="number" class="form-control" name="quantidade_dias" id="quantidade_dias"
-                                    value="{{ old('quantidade_dias') }}">
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-md-4 col-sm-12">
                             <div class="form-group">
                                 <label for="data_entrada">Data de entrada</label>
                                 <input type="date" class="form-control" name="data_entrada" id="data_entrada"
                                     value="{{ old('data_entrada') }}">
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-12">
+                        <div class="col-md-4 col-sm-12">
                             <div class="form-group">
                                 <label for="data_saida">Data de saída</label>
                                 <input type="date" class="form-control" name="data_saida" id="data_saida"

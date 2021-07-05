@@ -27,7 +27,7 @@
                                     value="{{ $viagem->id }}">
                                 <label for="numero_pessoas">Quantidade Pessoas</label>
                                 <input type="number" class="form-control" name="numero_pessoas" id="numero_pessoas"
-                                    value="{{ old('numero_pessoas') }}">
+                                    value="{{ old('numero_pessoas') }}" required>
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
@@ -44,14 +44,14 @@
                                 <div class="form-group">
                                     <label for="data_entrada">Data de entrada</label>
                                     <input type="date" class="form-control" name="data_entrada" id="data_entrada"
-                                        value="{{ old('data_entrada') }}">
+                                        value="{{ old('data_entrada') }}" required>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-12">
                                 <div class="form-group">
                                     <label for="data_saida">Data de saída</label>
                                     <input type="date" class="form-control" name="data_saida" id="data_saida"
-                                        value="{{ old('data_saida') }}">
+                                        value="{{ old('data_saida') }}" required>
                                 </div>
                             </div>
                             <button class="btn btn-primary" type="submit">Enviar</button>
@@ -62,15 +62,16 @@
         </div>
         <div class="col-md-7 col-sm-12">
             <div class="card p-5">
-                <h4>Pernoites Cadastradas</h4>
+                <h4>Pernoites Cadastradas | <small style="font-size: 0.6em">Totoal de Pessoas da Viagem = {{ $totalPessoas }}</small></h4>
                 <div class="table-responsive">
-                    <table class="table table-striped">
+                    <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th scope="col">Anfitrião</th>
                                 <th scope="col">Entrada</th>
-                                <th scope="col">Saida</th>
-                                <th scope="col">Nº Pessoas</th>
+                                <th scope="col">Dias</th>
+                                <th scope="col">Pessoas</th>
+                                <th scope="col">Porcentagem</th>
                                 <th scope="col">Excluir</th>
                             </tr>
                         </thead>
@@ -95,8 +96,9 @@
                                         </b>
                                     </td>
                                     <td>{{ date('d/m/Y', strtotime($pernoite->data_entrada)) }}</td>
-                                    <td>{{ date('d/m/Y', strtotime($pernoite->data_saida)) }}</td>
-                                    <td>{{ $pernoite->numero_pessoas }}</td>
+                                    <td class="text-center">{{ $pernoite->dias }}</td>
+                                    <td class="text-center">{{ $pernoite->numero_pessoas }}</td>
+                                    <td class="text-center">{{ number_format((($pernoite->numero_pessoas * $pernoite->dias ) / $geralTotal) *100 , 2) }} %</td>
                                     <td>
                                         <form action="{{ route('pernoites.destroy', $pernoite->id) }}" method="POST">
                                             @csrf

@@ -43,10 +43,10 @@
             <div class="bg-ventura">
                 <p class="pt-4">CASA</p>
                 <div class="row pb-4">
-                    <div class="col-md-3 col-sm-6">Acomodações: {{ number_format($mediasCasaAcomodacao, 2 ) }}</div>
-                    <div class="col-md-3 col-sm-6">Funcionarios: {{ number_format($mediasCasaFuncionarios, 2 ) }}</div>
-                    <div class="col-md-3 col-sm-6">Equipamentos: {{ number_format($mediasCasaEquipamentos, 2 ) }}</div>
-                    <div class="col-md-3 col-sm-6">Tecnologia da Informação: {{ number_format($mediasCasaTi, 2 ) }}</div>
+                    <div class="col-md-6 col-sm-6">Geral: {{ number_format((($mediasCasaAcomodacao + $mediasCasaFuncionarios + $mediasCasaEquipamentos)/3) , 2 ) }}</div>
+                    {{-- <div class="col-md-3 col-sm-6">Funcionarios: {{ number_format($mediasCasaFuncionarios, 2 ) }}</div>
+                    <div class="col-md-3 col-sm-6">Equipamentos: {{ number_format($mediasCasaEquipamentos, 2 ) }}</div> --}}
+                    <div class="col-md-6 col-sm-6">Tecnologia da Informação: {{ number_format($mediasCasaTi, 2 ) }}</div>
                 </div>
             </div>
             <button class="btn btn-default mt-3" data-toggle="collapse" href="#notasCasa" role="button" aria-expanded="false" aria-controls="notasCasa">Notas da Casa</button>

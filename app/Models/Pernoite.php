@@ -12,6 +12,7 @@ class Pernoite extends Model
     protected $fillable = [
         'data_entrada',
         'data_saida',
+        'dias',
         'numero_pessoas',
         'viagem_id',
         'socio_id'

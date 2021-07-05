@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
 use App\Http\Requests\StoreUpdateViagens;
 use App\Models\Viagem;
 use Illuminate\Http\Request;
@@ -30,8 +31,17 @@ class ViagemController extends Controller
 
     public function store(StoreUpdateViagens $request)
     {
-        Viagem::create($request->all());
+        $dadosRecebidos = $request->all();
+        $entrada = new DateTime($dadosRecebidos['data_saida']);
+        $saida = new DateTime($dadosRecebidos['data_entrada']);
+        $diferenca = $saida->diff($entrada);
 
+        Viagem::create([
+            'quantidade_dias' => $diferenca->days,
+            'data_entrada'=> $dadosRecebidos['data_entrada'],
+            'data_saida' => $dadosRecebidos['data_saida'],
+            'propriedade_id' => $dadosRecebidos['propriedade_id'],
+        ]);
         $mensagem =  'Viagem Criada com Sucesso!';
         return redirect()->route('viagens.index')->with('mensagem' , $mensagem);
     }
