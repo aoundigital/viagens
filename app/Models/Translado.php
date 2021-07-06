@@ -13,6 +13,7 @@ class Translado extends Model
         'data',
         'prefixo',
         'horario',
-        'viagem_id'
+        'viagem_id',
+        'nome_socio'
     ];
 }

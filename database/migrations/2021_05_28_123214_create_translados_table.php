@@ -18,6 +18,7 @@ class CreateTransladosTable extends Migration
             $table->date('data');
             $table->string('prefixo');
             $table->string('horario');
+            $table->string('nome_socio');
             $table->unsignedBigInteger('viagem_id');
             $table->foreign('viagem_id')->references('id')->on('viagems')->onDelete('cascade');
             $table->timestamps();

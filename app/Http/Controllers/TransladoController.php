@@ -40,6 +40,7 @@ class TransladoController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         Translado::create($request->all());
 
         $this->mensagem =  'Translado Criado com Sucesso!';

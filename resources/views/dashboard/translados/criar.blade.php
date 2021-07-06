@@ -34,6 +34,15 @@
                         <label for="data">Data do Voo</label>
                         <input type="date" class="form-control" name="data" id="data" value="{{ old('data') }}">
                     </div>
+                    <div class="form-group">
+                        <label for="nome_socio">Sócio</label>
+                        <select name="nome_socio" class="form-control" id="nome_socio">
+                            <option value="Carlos">Carlos</option>
+                            <option value="José Luiz">José Luiz</option>
+                            <option value="Patrícia3">Patrícia</option>
+                            <option value="Paula">Paula</option>
+                        </select>
+                    </div>
                     <button class="btn btn-primary" type="submit">Enviar</button>
                 </form>
             </div>
@@ -44,6 +53,7 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
+                            <th scope="col">Sócio</th>
                             <th scope="col">Prefixo Aeronave</th>
                             <th scope="col">Horário do Voo</th>
                             <th scope="col">Data do Voo</th>
@@ -53,6 +63,7 @@
                     @foreach ($viagem->translado as $translado)
                         <tbody>
                             <tr>
+                                <td>{{ $translado->nome_socio  }}</td>
                                 <td>{{ $translado->prefixo }}</td>
                                 <td>{{ $translado->horario }}</td>
                                 <td>{{ date('d/m/Y', strtotime($translado->data)) }}</td>
