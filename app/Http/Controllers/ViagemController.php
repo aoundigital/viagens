@@ -37,7 +37,7 @@ class ViagemController extends Controller
         $diferenca = $saida->diff($entrada);
 
         Viagem::create([
-            'quantidade_dias' => $diferenca->days,
+            'quantidade_dias' => $diferenca->days + 1,
             'data_entrada'=> $dadosRecebidos['data_entrada'],
             'data_saida' => $dadosRecebidos['data_saida'],
             'propriedade_id' => $dadosRecebidos['propriedade_id'],

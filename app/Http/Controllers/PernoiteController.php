@@ -58,7 +58,7 @@ class PernoiteController extends Controller
             'data_saida' => $dadosRecebidos['data_saida'],
             'viagem_id' => $dadosRecebidos['viagem_id'],
             'socio_id' => $dadosRecebidos['socio_id'],
-            'dias' => $diferenca->days,
+            'dias' => $diferenca->days + 1,
             ]);
 
         $this->mensagem =  'Pernoite Criada com Sucesso!';
