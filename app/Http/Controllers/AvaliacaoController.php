@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Mail;
 class AvaliacaoController extends Controller
 {
     public $mensagem;
+    public $emailPadrao = 'contato@avaliacao.info';
 
     public function index()
     {
@@ -171,11 +172,11 @@ class AvaliacaoController extends Controller
             $moreUsers[] = $emai->email;
         }
         if ($moreUsers) {
-            Mail::to("criatacom@gmail.com")->cc($moreUsers)->send(new EnvioAvaliacao($conteudo));
+            Mail::to($this->emailPadrao)->cc($moreUsers)->send(new EnvioAvaliacao($conteudo));
             $this->mensagem = "Email enviado!";
             return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
         } else {
-            Mail::to("criatacom@gmail.com")->send(new EnvioAvaliacao($conteudo));
+            Mail::to($this->emailPadrao)->send(new EnvioAvaliacao($conteudo));
             $this->mensagem = "Email enviado!";
             return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
         }
@@ -189,11 +190,11 @@ class AvaliacaoController extends Controller
             $moreUsers[] = $emai->email;
         }
         if ($moreUsers) {
-            Mail::to("criatacom@gmail.com")->cc($moreUsers)->send(new EnvioAvaliacao($conteudo));
+            Mail::to($this->emailPadrao)->cc($moreUsers)->send(new EnvioAvaliacao($conteudo));
             $this->mensagem = "Email enviado!";
             return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
         } else {
-            Mail::to("criatacom@gmail.com")->send(new EnvioAvaliacao($conteudo));
+            Mail::to($this->emailPadrao)->send(new EnvioAvaliacao($conteudo));
             $this->mensagem = "Email enviado!";
             return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
         }
@@ -204,6 +205,16 @@ class AvaliacaoController extends Controller
         $socio = Socio::find($request->idSocio);
         $conteudo = $request;
         Mail::to($socio->email)->send(new EnvioLink($conteudo));
+
+        $this->mensagem = "Email enviado!";
+        return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);
+    }
+
+    public function enviarLinkPersonalizado(Request $request)
+    {
+        $emailPersonalizado = $request->emailPersonalizado;
+        $conteudo = $request;
+        Mail::to($emailPersonalizado)->send(new EnvioLink($conteudo));
 
         $this->mensagem = "Email enviado!";
         return redirect()->route('viagens.index')->with('mensagem' , $this->mensagem);

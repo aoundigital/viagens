@@ -8,7 +8,7 @@
 <div class="block-header">
     <div class="row clearfix">
         <div class="col-lg-7 col-md-8 col-sm-12">
-            <h6 class="text-info">Avaliação | {{ $pesquisa->nome_socio }} | {{ $nomeProrpiedade }}</h6><br>
+            <h6 class="text-info">Avaliação | {{ $pesquisa->nome_socio }} | {{ $nomeProrpiedade }} | Enviada dia: {{ date('d/m/Y', strtotime($pesquisa->created_at)) }}</h6><br>
             {{-- Envio de Emails --}}
             <form action="{{ route('avaliacao.disparar_casa') }}" method="POST">
                 @csrf

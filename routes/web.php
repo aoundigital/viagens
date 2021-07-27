@@ -21,6 +21,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('viagens', [ViagemController::class, 'index'])->name('viagens.index');
     // rota de avaliacoes EMAILS
     Route::post('avaliacao/enviar_link', [AvaliacaoController::class, 'enviarLink'])->name('avaliacao.enviar_link');
+    Route::post('avaliacao/enviar_link_personalizado', [AvaliacaoController::class, 'enviarLinkPersonalizado'])->name('avaliacao.enviar_link_personalizado');
     Route::post('avaliacao/disparar_casa', [AvaliacaoController::class, 'dispararCasa'])->name('avaliacao.disparar_casa');
     Route::post('avaliacao/disparar_barco', [AvaliacaoController::class, 'dispararBarco'])->name('avaliacao.disparar_barco');
     // rota de avaliacoes
@@ -73,6 +74,6 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

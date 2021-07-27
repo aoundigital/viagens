@@ -37,7 +37,7 @@
                 <div class="navbar-right">
                     <div id="navbar-menu">
                         <ul class="nav navbar-nav">
-                            <li class="dropdown hidden-xs">
+                            {{-- <li class="dropdown hidden-xs">
                                 <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown">Criar</a>
                                 <div class="dropdown-menu pb-0 mt-0">
                                     <a class="dropdown-item pt-2 pb-2" href="{{ route('registrar') }}">Usuario</a>
@@ -45,7 +45,7 @@
                                     <a class="dropdown-item pt-2 pb-2" href="javascript:void(0);">Propriedade</a>
                                     <a class="dropdown-item pt-2 pb-2" href="javascript:void(0);">Equipamento</a>
                                 </div>
-                            </li>
+                            </li> --}}
                             <li class="hidden-xs"><a href="javascript:void(0);" id="btnFullscreen" class="icon-menu"><i class="fa fa-arrows-alt"></i></a></li>
                             <li>
                                 <form method="POST" action="{{ route('logout') }}">

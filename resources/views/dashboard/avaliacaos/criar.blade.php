@@ -57,7 +57,8 @@
                                 <th scope="col">Nome</th>
                                 <th scope="col">Situação</th>
                                 <th scope="col">Link da Avaliação</th>
-                                <th scope="col">Distribuir</th>
+                                <th scope="col">Padrão</th>
+                                <th scope="col">Personalizado</th>
                                 <th scope="col">Excluir</th>
                             </tr>
                         </thead>
@@ -74,17 +75,32 @@
                                         @endif
                                     </td>
                                     <td>
-                                        {{"https://pesquisa.avaliacao.info?avaliacao=$avaliacao->id&avaliador=$avaliacao->socio_id&propriedade=$avaliacao->propriedade_id&viagem=$avaliacao->viagem_id"}}
+                                        {{"https://pesquisa.avaliacao.info?avaliacao=$avaliacao->id&avaliador=$avaliacao->socio_id&propriedade=$avaliacao->propriedade_id&viagem=$avaliacao->viagem_id&dataEntrada=$viagem->data_entrada"}}
                                     </td>
                                     <td>
                                         @if($avaliacao->casa == null)
                                         <form id="formEnvio" action="{{ route('avaliacao.enviar_link') }}" method="POST">
                                             @csrf
-                                            <input type="hidden" name="linkagem" id="linkagem" value="{{"https://pesquisa.avaliacao.info?avaliacao=$avaliacao->id&avaliador=$avaliacao->socio_id&propriedade=$avaliacao->propriedade_id&viagem=$avaliacao->viagem_id"}}">
+                                            <input type="hidden" name="linkagem" id="linkagem" value="{{"https://pesquisa.avaliacao.info?avaliacao=$avaliacao->id&avaliador=$avaliacao->socio_id&propriedade=$avaliacao->propriedade_id&viagem=$avaliacao->viagem_id&dataEntrada=$viagem->data_entrada"}}">
                                             <input type="hidden" class="form-control" id="idAvaliacao" name="idAvaliacao" value="{{ $avaliacao->id }}">
                                             <input type="hidden" class="form-control" id="idSocio" name="idSocio" value="{{ $avaliacao->socio_id }}">
                                             <input type="hidden" class="form-control" id="nomeSocio" name="nomeSocio" value="{{ $avaliacao->nome_socio }}">
-                                            <button class="btn btn-primary"  type="submit">Enviar por email</button>
+                                            <button class="btn btn-primary"  type="submit">Enviar email</button>
+                                        </form>
+                                        @else
+                                            Avaliação Completa
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($avaliacao->casa == null)
+                                        <form id="formEnvio" action="{{ route('avaliacao.enviar_link_personalizado') }}" method="POST">
+                                            @csrf
+                                            <input type="text" name="emailPersonalizado" id="emailPersonalizado" placeholder="email personalizado">
+                                            <input type="hidden" name="linkagem" id="linkagem" value="{{"https://pesquisa.avaliacao.info?avaliacao=$avaliacao->id&avaliador=$avaliacao->socio_id&propriedade=$avaliacao->propriedade_id&viagem=$avaliacao->viagem_id&dataEntrada=$viagem->data_entrada"}}">
+                                            <input type="hidden" class="form-control" id="idAvaliacao" name="idAvaliacao" value="{{ $avaliacao->id }}">
+                                            <input type="hidden" class="form-control" id="idSocio" name="idSocio" value="{{ $avaliacao->socio_id }}">
+                                            <input type="hidden" class="form-control" id="nomeSocio" name="nomeSocio" value="{{ $avaliacao->nome_socio }}">
+                                            <br><button class="btn btn-secondary"  type="submit">Enviar</button>
                                         </form>
                                         @else
                                             Avaliação Completa
